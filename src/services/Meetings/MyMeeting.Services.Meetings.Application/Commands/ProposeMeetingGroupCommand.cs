@@ -2,7 +2,7 @@
 
 namespace MyMeeting.Services.Meetings.Application.Commands;
 
-public class ProposeMeetingGroupCommand : ICommand
+public class ProposeMeetingGroupCommand : ICommand<Guid>
 {
     public ProposeMeetingGroupCommand(string name, string description, string locationCity, string locationCountryCode)
     {

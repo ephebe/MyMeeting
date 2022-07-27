@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace MyMeeting.Services.Meetings.Core.Types;
 
-public record MeetingGroupId : AggregateId
+public record MemberId : AggregateId
 {
-    public MeetingGroupId(Guid value) : base(value)
+    public MemberId(Guid value) : base(value)
     {
         Guard.Against.Null(value, nameof(value));
     }

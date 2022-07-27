@@ -14,7 +14,6 @@
     <Folder Include="ValueObjects\" />
     <Folder Include="Validators\" />
     <Folder Include="Services\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>

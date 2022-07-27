@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace BuildingBlocks.Abstractions.Domain;
 
-public record EntityId : EntityId<long>
+public record EntityId : EntityId<Guid>
 {
-    public EntityId(long id) : base(id)
+    public EntityId(Guid id) : base(id)
     {
     }
 
-    public static implicit operator long(EntityId id) => Guard.Against.Null(id.Value, nameof(id.Value));
-    public static implicit operator EntityId(long id) => new(id);
+    public static implicit operator Guid(EntityId id) => Guard.Against.Null(id.Value, nameof(id.Value));
+    public static implicit operator EntityId(Guid id) => new(id);
 }
 
 public record EntityId<T> : Identity<T>
