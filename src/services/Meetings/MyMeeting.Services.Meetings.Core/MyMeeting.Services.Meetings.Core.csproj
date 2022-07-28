@@ -11,13 +11,12 @@
     <Folder Include="Exceptions\" />
     <Folder Include="Factories\" />
     <Folder Include="Policies\" />
-    <Folder Include="ValueObjects\" />
     <Folder Include="Validators\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Abstractions\BuildingBlocks.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Core\BuildingBlocks.Core.csproj" />
   </ItemGroup>
 
 </Project>
