@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyMeeting.Services.Meetings.Core.Aggregates;
+using MyMeeting.Services.Meetings.Core.Types;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.Core.Domain;
+using MyMeeting.Services.Meetings.Core.Events;
 using MyMeeting.Services.Meetings.Core.Types;
 using MyMeeting.Services.Meetings.Core.ValueObjects;
 using System;
@@ -49,7 +50,7 @@ public class MeetingGroupProposal : Aggregate<MeetingGroupProposalId>
         _proposalDate = SystemClock.Now;
         _status = MeetingGroupProposalStatus.InVerification;
 
-        this.AddDomainEvent(new MeetingGroupProposedDomainEvent(this.Id, _name, _description, proposalUserId, _proposalDate, _location.City, _location.CountryCode));
+        this.AddDomainEvents(new MeetingGroupProposedDomainEvent(this.Id, _name, _description, proposalUserId, _proposalDate, _location.City, _location.CountryCode));
     }
 
     public static MeetingGroupProposal ProposeNew(
@@ -67,6 +68,6 @@ public class MeetingGroupProposal : Aggregate<MeetingGroupProposalId>
 
         _status = MeetingGroupProposalStatus.Accepted;
 
-        this.AddDomainEvent(new MeetingGroupProposalAcceptedDomainEvent(this.Id));
+        this.AddDomainEvents(new MeetingGroupProposalAcceptedDomainEvent(this.Id));
     }
 }

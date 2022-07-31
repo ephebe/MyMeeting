@@ -1,5 +1,8 @@
 ﻿using BuildingBlocks.Abstractions.CQRS.Commands;
 using MyMeeting.Services.Meetings.Core;
+using MyMeeting.Services.Meetings.Core.Aggregates;
+using MyMeeting.Services.Meetings.Core.Repositories;
+using MyMeeting.Services.Meetings.Core.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +23,16 @@ internal class ProposeMeetingGroupCommandHandler : ICommandHandler<ProposeMeetin
         _memberContext = memberContext;
     }
 
-    public Task<Guid> Handle(ProposeMeetingGroupCommand request, CancellationToken cancellationToken)
+    public async Task<Guid> Handle(ProposeMeetingGroupCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var meetingGroupProposal = MeetingGroupProposal.ProposeNew(
+                request.Name,
+                request.Description,
+                MeetingGroupLocation.CreateNew(request.LocationCity, request.LocationCountryCode),
+                _memberContext.MemberId);
+
+        await _meetingGroupProposalRepository.AddAsync(meetingGroupProposal);
+
+        return meetingGroupProposal.Id.Value;
     }
 }
