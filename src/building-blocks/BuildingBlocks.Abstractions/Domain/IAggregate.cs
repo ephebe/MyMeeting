@@ -9,6 +9,6 @@ public interface IAggregate<out TIdentity, TId> : IAggregate<TIdentity>
 {
 }
 
-public interface IAggregate : IAggregate<AggregateId, long>
+public interface IAggregate : IAggregate<AggregateId, Guid>
 {
 }

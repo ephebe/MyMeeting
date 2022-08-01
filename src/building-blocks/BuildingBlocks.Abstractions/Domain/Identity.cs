@@ -19,9 +19,9 @@ public abstract record Identity<TId>
     }
 }
 
-public abstract record Identity : Identity<long>
+public abstract record Identity : Identity<Guid>
 {
-    protected Identity(long value) : base(value)
+    protected Identity(Guid value) : base(value)
     {
     }
 }

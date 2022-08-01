@@ -1,4 +1,6 @@
 ﻿using Ardalis.GuardClauses;
+using BuildingBlocks.Core.Domain.Exceptions;
+using BuildingBlocks.Core.Exception;
 using System;
 using System.Collections.Generic;
 using System.Linq;

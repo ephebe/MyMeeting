@@ -1,5 +1,6 @@
 ﻿using BuildingBlocks.Abstractions.CQRS.Events.Internal;
 using BuildingBlocks.Abstractions.Domain;
+using BuildingBlocks.Core.Domain.Exceptions;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;

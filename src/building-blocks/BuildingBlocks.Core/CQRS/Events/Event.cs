@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.Abstractions.CQRS.Events;
+using BuildingBlocks.Core.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
