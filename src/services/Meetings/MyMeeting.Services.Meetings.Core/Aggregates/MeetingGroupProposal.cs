@@ -1,5 +1,6 @@
 ﻿using BuildingBlocks.Core.Domain;
 using MyMeeting.Services.Meetings.Core.Events;
+using MyMeeting.Services.Meetings.Core.Rules;
 using MyMeeting.Services.Meetings.Core.Types;
 using MyMeeting.Services.Meetings.Core.ValueObjects;
 using System;
