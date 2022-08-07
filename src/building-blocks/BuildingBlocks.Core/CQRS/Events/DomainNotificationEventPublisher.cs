@@ -1,5 +1,6 @@
 ﻿using Ardalis.GuardClauses;
 using BuildingBlocks.Abstractions.CQRS.Events.Internal;
+using BuildingBlocks.Abstractions.Messaging.PersistMessage;
 using System;
 using System.Collections.Generic;
 using System.Linq;

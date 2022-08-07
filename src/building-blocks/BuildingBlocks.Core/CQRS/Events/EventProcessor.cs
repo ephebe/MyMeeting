@@ -1,8 +1,10 @@
-﻿using BuildingBlocks.Abstractions.CQRS.Events;
+﻿using Ardalis.GuardClauses;
+using BuildingBlocks.Abstractions.CQRS.Events;
 using BuildingBlocks.Abstractions.CQRS.Events.Internal;
 using BuildingBlocks.Abstractions.Messaging;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,41 +24,41 @@ public class EventProcessor : IEventProcessor
         _serviceProvider = serviceProvider;
     }
 
-    public async Task PublishAsync<TEvent>(TEvent @event, CancellationToken cancellationToken = default)
-        where TEvent : IEvent
-    {
-        var domainEventPublisher = _serviceProvider.GetRequiredService<IDomainEventPublisher>();
-        var domainNotificationEventPublisher = _serviceProvider.GetRequiredService<IDomainNotificationEventPublisher>();
-        var integrationEventPublisher = _serviceProvider.GetRequiredService<IBus>();
+    //public async Task PublishAsync<TEvent>(TEvent @event, CancellationToken cancellationToken = default)
+    //    where TEvent : IEvent
+    //{
+    //    var domainEventPublisher = _serviceProvider.GetRequiredService<IDomainEventPublisher>();
+    //    var domainNotificationEventPublisher = _serviceProvider.GetRequiredService<IDomainNotificationEventPublisher>();
+    //    var integrationEventPublisher = _serviceProvider.GetRequiredService<IBus>();
 
-        if (@event is IIntegrationEvent integrationEvent)
-        {
-            await integrationEventPublisher.PublishAsync(integrationEvent, null, cancellationToken: cancellationToken);
+    //    if (@event is IIntegrationEvent integrationEvent)
+    //    {
+    //        await integrationEventPublisher.PublishAsync(integrationEvent, null, cancellationToken: cancellationToken);
 
-            return;
-        }
+    //        return;
+    //    }
 
-        if (@event is IDomainEvent domainEvent)
-        {
-            await domainEventPublisher.PublishAsync(domainEvent, cancellationToken);
+    //    if (@event is IDomainEvent domainEvent)
+    //    {
+    //        await domainEventPublisher.PublishAsync(domainEvent, cancellationToken);
 
-            return;
-        }
+    //        return;
+    //    }
 
-        if (@event is IDomainNotificationEvent notificationEvent)
-        {
-            await domainNotificationEventPublisher.PublishAsync(notificationEvent, cancellationToken);
-        }
-    }
+    //    if (@event is IDomainNotificationEvent notificationEvent)
+    //    {
+    //        await domainNotificationEventPublisher.PublishAsync(notificationEvent, cancellationToken);
+    //    }
+    //}
 
-    public async Task PublishAsync<TEvent>(TEvent[] events, CancellationToken cancellationToken = default)
-        where TEvent : IEvent
-    {
-        foreach (var @event in events)
-        {
-            await PublishAsync(@event, cancellationToken);
-        }
-    }
+    //public async Task PublishAsync<TEvent>(TEvent[] events, CancellationToken cancellationToken = default)
+    //    where TEvent : IEvent
+    //{
+    //    foreach (var @event in events)
+    //    {
+    //        await PublishAsync(@event, cancellationToken);
+    //    }
+    //}
 
     public async Task DispatchAsync<TEvent>(TEvent @event, CancellationToken cancellationToken = default)
         where TEvent : IEvent

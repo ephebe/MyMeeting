@@ -1,7 +1,12 @@
-﻿using BuildingBlocks.Abstractions.CQRS.Events;
+﻿using Ardalis.GuardClauses;
+using BuildingBlocks.Abstractions.CQRS.Events;
 using BuildingBlocks.Abstractions.CQRS.Events.Internal;
+using BuildingBlocks.Abstractions.Messaging;
+using BuildingBlocks.Abstractions.Messaging.PersistMessage;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,6 +63,7 @@ public class DomainEventPublisher : IDomainEventPublisher
             eventsToDispatch = _domainEventsAccessor.UnCommittedDomainEvents.ToImmutableList();
         }
 
+        //首先，用Mediator，InProcess的Event Handler
         await _eventProcessor.DispatchAsync(eventsToDispatch.ToArray(), cancellationToken);
 
         // Save wrapped integration and notification events to outbox for further processing after commit
