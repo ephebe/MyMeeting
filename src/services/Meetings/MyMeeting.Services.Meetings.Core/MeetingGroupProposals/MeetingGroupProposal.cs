@@ -1,16 +1,11 @@
 ﻿using BuildingBlocks.Core.Domain;
 using BuildingBlocks.Core.Utils;
-using MyMeeting.Services.Meetings.Core.Events;
-using MyMeeting.Services.Meetings.Core.Rules;
+using MyMeeting.Services.Meetings.Core.MeetingGroupProposals.Events;
+using MyMeeting.Services.Meetings.Core.MeetingGroupProposals.Rules;
 using MyMeeting.Services.Meetings.Core.Types;
 using MyMeeting.Services.Meetings.Core.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MyMeeting.Services.Meetings.Core.Aggregates;
+namespace MyMeeting.Services.Meetings.Core.MeetingGroupProposals;
 
 public class MeetingGroupProposal : Aggregate<MeetingGroupProposalId>
 {
@@ -47,7 +42,7 @@ public class MeetingGroupProposal : Aggregate<MeetingGroupProposalId>
         _proposalDate = SystemClock.Now;
         _status = MeetingGroupProposalStatus.InVerification;
 
-        this.AddDomainEvents(new MeetingGroupProposedDomainEvent(this.Id, _name, _description, proposalUserId, _proposalDate, _location.City, _location.CountryCode));
+        AddDomainEvents(new MeetingGroupProposedDomainEvent(Id, _name, _description, proposalUserId, _proposalDate, _location.City, _location.CountryCode));
     }
 
     public static MeetingGroupProposal ProposeNew(
@@ -61,10 +56,10 @@ public class MeetingGroupProposal : Aggregate<MeetingGroupProposalId>
 
     public void Accept()
     {
-        this.CheckRule(new MeetingGroupProposalCannotBeAcceptedMoreThanOnceRule(_status));
+        CheckRule(new MeetingGroupProposalCannotBeAcceptedMoreThanOnceRule(_status));
 
         _status = MeetingGroupProposalStatus.Accepted;
 
-        this.AddDomainEvents(new MeetingGroupProposalAcceptedDomainEvent(this.Id));
+        AddDomainEvents(new MeetingGroupProposalAcceptedDomainEvent(Id));
     }
 }

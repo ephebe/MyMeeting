@@ -1,5 +1,6 @@
 ﻿using BuildingBlocks.Abstractions.CQRS.Events.Internal;
 using BuildingBlocks.Core.CQRS.Events.Internal;
+using MyMeeting.Services.Meetings.Core.MeetingGroupProposals;
 using MyMeeting.Services.Meetings.Core.Types;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMeeting.Services.Meetings.Core.Events;
+namespace MyMeeting.Services.Meetings.Core.MeetingGroupProposals.Events;
 
 public record MeetingGroupProposedDomainEvent : DomainEvent
 {
@@ -20,13 +21,13 @@ public record MeetingGroupProposedDomainEvent : DomainEvent
         string locationCity,
         string locationCountryCode)
     {
-        this.MeetingGroupProposalId = meetingGroupProposalId;
-        this.Name = name;
-        this.Description = description;
-        this.LocationCity = locationCity;
-        this.LocationCountryCode = locationCountryCode;
-        this.ProposalDate = proposalDate;
-        this.ProposalUserId = proposalUserId;
+        MeetingGroupProposalId = meetingGroupProposalId;
+        Name = name;
+        Description = description;
+        LocationCity = locationCity;
+        LocationCountryCode = locationCountryCode;
+        ProposalDate = proposalDate;
+        ProposalUserId = proposalUserId;
     }
 
     public MeetingGroupProposalId MeetingGroupProposalId { get; }

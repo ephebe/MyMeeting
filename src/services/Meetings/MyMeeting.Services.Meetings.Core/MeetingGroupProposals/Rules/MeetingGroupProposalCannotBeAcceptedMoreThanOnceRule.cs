@@ -1,12 +1,11 @@
 ﻿using BuildingBlocks.Abstractions.Domain;
-using MyMeeting.Services.Meetings.Core.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMeeting.Services.Meetings.Core.Rules;
+namespace MyMeeting.Services.Meetings.Core.MeetingGroupProposals.Rules;
 
 public class MeetingGroupProposalCannotBeAcceptedMoreThanOnceRule : IBusinessRule
 {

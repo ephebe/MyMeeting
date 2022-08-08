@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMeeting.Services.Meetings.Core.Types;
+namespace MyMeeting.Services.Meetings.Core.MeetingGroupProposals;
 
 public record MeetingGroupProposalId : AggregateId
 {
