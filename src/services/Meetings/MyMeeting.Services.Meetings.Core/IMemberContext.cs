@@ -1,4 +1,4 @@
-﻿using MyMeeting.Services.Meetings.Core.Types;
+﻿using MyMeeting.Services.Meetings.Core.Members;
 using System;
 using System.Collections.Generic;
 using System.Linq;

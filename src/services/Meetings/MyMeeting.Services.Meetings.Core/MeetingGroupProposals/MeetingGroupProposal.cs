@@ -2,8 +2,7 @@
 using BuildingBlocks.Core.Utils;
 using MyMeeting.Services.Meetings.Core.MeetingGroupProposals.Events;
 using MyMeeting.Services.Meetings.Core.MeetingGroupProposals.Rules;
-using MyMeeting.Services.Meetings.Core.Types;
-using MyMeeting.Services.Meetings.Core.ValueObjects;
+using MyMeeting.Services.Meetings.Core.Members;
 
 namespace MyMeeting.Services.Meetings.Core.MeetingGroupProposals;
 
