@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BuildingBlocks.Core.Persistence;
 
-internal class UnitOfWorkCommandHandlerDecorator<T> : ICommandHandler<T>
+public class UnitOfWorkCommandHandlerDecorator<T> : ICommandHandler<T>
         where T : ICommand
 {
     private readonly ICommandHandler<T> _decorated;

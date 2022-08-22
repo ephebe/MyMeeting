@@ -1,35 +1,31 @@
+using BuildBlocks.Persistence.EfCore.SqlServer;
+using BuildingBlocks.Abstractions.CQRS.Commands;
+using BuildingBlocks.Core.CQRS;
+using BuildingBlocks.Core.Persistence;
+using MyMeeting.Services.Meeting.Infrastructure;
+using MyMeeting.Services.Meeting.Infrastructure.Domain.MeetingGroupProposals;
+using MyMeeting.Services.Meetings.Core.MeetingGroupProposals;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+RegisterServices(builder);
+
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-app.UseHttpsRedirection();
 
-var summaries = new[]
+
+
+await app.RunAsync();
+
+static void RegisterServices(WebApplicationBuilder builder) 
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    builder.Services.AddSqlServerDbContext<MeetingsContext>(builder.Configuration);
+    builder.Services.AddSqlServerRepository<MeetingGroupProposal, MeetingGroupProposalId, MeetingGroupProposalRepository>();
+    builder.Services.AddUnitOfWork<MeetingsContext>(ServiceLifetime.Scoped);
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateTime.Now.AddDays(index),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-});
-
-
-app.Run();
-
-internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    //builder.Services.Decorate(typeof(ICommandHandler<>), typeof(DomainEventCommanHandlerDecorator<>));
+    //builder.Services.Decorate(typeof(ICommandHandler<>), typeof(UnitOfWorkCommandHandlerDecorator<>));
 }

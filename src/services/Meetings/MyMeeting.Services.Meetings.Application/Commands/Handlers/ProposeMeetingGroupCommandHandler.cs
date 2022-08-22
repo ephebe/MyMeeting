@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.Abstractions.CQRS.Commands;
+using BuildingBlocks.Abstractions.Persistence;
 using MyMeeting.Services.Meetings.Core;
 using MyMeeting.Services.Meetings.Core.MeetingGroupProposals;
 using System;
@@ -11,10 +12,10 @@ namespace MyMeeting.Services.Meetings.Application.Commands.Handlers;
 
 internal class ProposeMeetingGroupCommandHandler : ICommandHandler<ProposeMeetingGroupCommand, Guid>
 {
-    private readonly IMeetingGroupProposalRepository _meetingGroupProposalRepository;
+    private readonly IRepository<MeetingGroupProposal, MeetingGroupProposalId> _meetingGroupProposalRepository;
     private readonly IMemberContext _memberContext;
     internal ProposeMeetingGroupCommandHandler(
-            IMeetingGroupProposalRepository meetingGroupProposalRepository,
+            IRepository<MeetingGroupProposal,MeetingGroupProposalId> meetingGroupProposalRepository,
             IMemberContext memberContext)
     {
         _meetingGroupProposalRepository = meetingGroupProposalRepository;

@@ -9,7 +9,5 @@ namespace MyMeeting.Services.Meetings.Core.MeetingGroupProposals;
 
 public interface IMeetingGroupProposalRepository
 {
-    Task AddAsync(MeetingGroupProposal meetingGroupProposal);
-
-    Task<MeetingGroupProposal> GetByIdAsync(MeetingGroupProposalId meetingGroupProposalId);
+    
 }
