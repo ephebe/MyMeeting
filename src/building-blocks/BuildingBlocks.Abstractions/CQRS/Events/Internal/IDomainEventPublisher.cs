@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BuildingBlocks.Abstractions.CQRS.Events.Internal;
 
+/// <summary>
+/// 簡單說就是會拿到DbContext，對存到裏面的DomainEvent進行處理
+/// </summary>
 public interface IDomainEventPublisher
 {
     Task PublishAsync(IDomainEvent domainEvent, CancellationToken cancellationToken = default);

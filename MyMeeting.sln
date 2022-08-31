@@ -41,7 +41,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.services.Meetings
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.services.Meetings.DatabaseMigration", "database\MyMeeting.services.Meetings.DatabaseMigration\MyMeeting.services.Meetings.DatabaseMigration.csproj", "{4C0575C4-FF33-4747-B70A-035817CCBA02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildBlocks.Persistence.EfCore.SqlServer", "src\building-blocks\BuildBlocks.Persistence.EfCore.SqlServer\BuildBlocks.Persistence.EfCore.SqlServer.csproj", "{C4D89073-197B-4A64-98BB-77A146D58C3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildBlocks.Persistence.EfCore.SqlServer", "src\building-blocks\BuildBlocks.Persistence.EfCore.SqlServer\BuildBlocks.Persistence.EfCore.SqlServer.csproj", "{C4D89073-197B-4A64-98BB-77A146D58C3A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlocks.Messaging.Persistence.SqlServer", "src\building-blocks\BuildingBlocks.Messaging.Persistence.SqlServer\BuildingBlocks.Messaging.Persistence.SqlServer.csproj", "{DA458BDC-0768-4AF8-A9EE-69B85F5FB83C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Integration.MassTransit", "src\building-blocks\BuildingBlocks.Integration.MassTransit\BuildingBlocks.Integration.MassTransit.csproj", "{A9901997-380C-4DBE-B203-75420126C0BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +89,14 @@ Global
 		{C4D89073-197B-4A64-98BB-77A146D58C3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4D89073-197B-4A64-98BB-77A146D58C3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4D89073-197B-4A64-98BB-77A146D58C3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA458BDC-0768-4AF8-A9EE-69B85F5FB83C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA458BDC-0768-4AF8-A9EE-69B85F5FB83C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA458BDC-0768-4AF8-A9EE-69B85F5FB83C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA458BDC-0768-4AF8-A9EE-69B85F5FB83C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9901997-380C-4DBE-B203-75420126C0BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9901997-380C-4DBE-B203-75420126C0BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9901997-380C-4DBE-B203-75420126C0BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9901997-380C-4DBE-B203-75420126C0BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -107,6 +119,8 @@ Global
 		{26F2DFA5-A1F1-42BC-8BFF-19B1684983C6} = {2E17B86E-FE1E-4632-A1CC-7DD6A071A0E4}
 		{4C0575C4-FF33-4747-B70A-035817CCBA02} = {D2E661A9-F1E3-4C61-8BE1-38D7080831B0}
 		{C4D89073-197B-4A64-98BB-77A146D58C3A} = {7AA1BD5F-F8A1-4DB1-A6D9-B43691C1998A}
+		{DA458BDC-0768-4AF8-A9EE-69B85F5FB83C} = {7AA1BD5F-F8A1-4DB1-A6D9-B43691C1998A}
+		{A9901997-380C-4DBE-B203-75420126C0BA} = {7AA1BD5F-F8A1-4DB1-A6D9-B43691C1998A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F27E50BA-E1EE-4209-8B6B-6CAEF65A519C}

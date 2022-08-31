@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BuildingBlocks.Abstractions.CQRS.Events.Internal;
 
+/// <summary>
+/// 裏面包著IMessagePersistenceService，僅針對非同步事件進行操作
+/// </summary>
 public interface IDomainNotificationEventPublisher
 {
     Task PublishAsync(IDomainNotificationEvent domainNotificationEvent, CancellationToken cancellationToken = default);

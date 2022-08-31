@@ -1,0 +1,31 @@
+﻿using BuildingBlocks.Abstractions.CQRS.Queries;
+using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BuildingBlocks.Core.CQRS.Queries;
+
+public class QueryProcessor : IQueryProcessor
+{
+    private readonly IMediator _mediator;
+
+    public QueryProcessor(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
+
+    public Task<TResponse> SendAsync<TResponse>(IQuery<TResponse> query, CancellationToken cancellationToken = default)
+    {
+        return _mediator.Send(query, cancellationToken);
+    }
+
+    public IAsyncEnumerable<TResponse> SendAsync<TResponse>(
+        IStreamQuery<TResponse> query,
+        CancellationToken cancellationToken = default)
+    {
+        return _mediator.CreateStream(query, cancellationToken);
+    }
+}
