@@ -1,6 +1,6 @@
 ﻿using BuildingBlocks.Abstractions.CQRS.Commands;
 
-namespace MyMeeting.Services.Meetings.Application.Commands;
+namespace MyMeeting.Services.Meetings.Application.MeetingGroupProposals;
 
 public class ProposeMeetingGroupCommand : ICommand<Guid>
 {

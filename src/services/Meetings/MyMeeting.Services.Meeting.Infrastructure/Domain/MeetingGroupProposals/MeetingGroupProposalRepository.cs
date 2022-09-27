@@ -11,9 +11,9 @@ namespace MyMeeting.Services.Meeting.Infrastructure.Domain.MeetingGroupProposals
 
 public class MeetingGroupProposalRepository : EfRepositoryBase<MeetingsContext, MeetingGroupProposal, MeetingGroupProposalId>,IMeetingGroupProposalRepository
 {
-    private readonly MeetingsContext _context;
+    //private readonly MeetingsContext _context;
 
-    internal MeetingGroupProposalRepository(MeetingsContext context) : base(context)
+    public MeetingGroupProposalRepository(MeetingsContext context) : base(context)
     {
     
     }

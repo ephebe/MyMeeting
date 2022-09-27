@@ -65,7 +65,7 @@ public static class Extensions
                     hostConfigurator.Username(rabbitMqOptions.UserName);
                     hostConfigurator.Password(rabbitMqOptions.Password);
                 });
-
+     
                 // https://masstransit-project.com/usage/exceptions.html#retry
                 // cfg.UseMessageRetry(r => r.Interval(3, 3));
 

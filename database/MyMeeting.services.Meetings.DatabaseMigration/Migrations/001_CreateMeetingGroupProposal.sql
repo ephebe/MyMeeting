@@ -1,4 +1,4 @@
-﻿CREATE TABLE [meetings].[MeetingGroupProposals]
+﻿CREATE TABLE [MeetingGroupProposals]
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL,
 	[Name] NVARCHAR(255) NOT NULL,

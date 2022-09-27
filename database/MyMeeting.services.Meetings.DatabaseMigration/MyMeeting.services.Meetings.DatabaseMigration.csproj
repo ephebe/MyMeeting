@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -10,13 +10,15 @@
   <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="Migrations\001_CreateMeetingGroupProposal.sql" />
+    <None Remove="Migrations\002_CreateStoreMessage.sql" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Migrations\001_CreateMeetingGroupProposal.sql" />
+    <EmbeddedResource Include="Migrations\001_CreateMeetingGroupProposal.sql" />
+    <EmbeddedResource Include="Migrations\002_CreateStoreMessage.sql" />
   </ItemGroup>
 
   <ItemGroup>

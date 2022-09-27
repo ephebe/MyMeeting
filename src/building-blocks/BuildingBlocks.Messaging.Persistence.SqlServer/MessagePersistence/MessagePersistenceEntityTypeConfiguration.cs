@@ -28,14 +28,6 @@ public class MessagePersistenceEntityTypeConfiguration : IEntityTypeConfiguratio
             .IsRequired()
             .IsUnicode(false);
 
-        builder.Property(x => x.DeliveryType)
-            .HasMaxLength(50)
-            .HasConversion(
-                v => v.ToString(),
-                v => (MessageDeliveryType)Enum.Parse(typeof(MessageDeliveryType), v))
-            .IsRequired()
-            .IsUnicode(false);
-
         builder.Property(x => x.MessageStatus)
             .HasMaxLength(50)
             .HasConversion(

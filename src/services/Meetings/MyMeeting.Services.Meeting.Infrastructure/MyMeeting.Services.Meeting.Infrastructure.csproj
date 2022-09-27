@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Abstractions\BuildingBlocks.Abstractions.csproj" />
+    <ProjectReference Include="..\MyMeeting.Services.Meetings.Application\MyMeeting.Services.Meetings.Application.csproj" />
     <ProjectReference Include="..\MyMeeting.Services.Meetings.Core\MyMeeting.Services.Meetings.Core.csproj" />
   </ItemGroup>
 

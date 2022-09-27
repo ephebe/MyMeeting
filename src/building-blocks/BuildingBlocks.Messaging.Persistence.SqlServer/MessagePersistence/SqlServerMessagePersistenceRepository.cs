@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace BuildingBlocks.Messaging.Persistence.SqlServer.MessagePersistence;
 
-public class PostgresMessagePersistenceRepository : IMessagePersistenceRepository
+public class SqlServerMessagePersistenceRepository : IMessagePersistenceRepository
 {
     private readonly MessagePersistenceDbContext _persistenceDbContext;
-    private readonly ILogger<PostgresMessagePersistenceRepository> _logger;
+    private readonly ILogger<SqlServerMessagePersistenceRepository> _logger;
 
-    public PostgresMessagePersistenceRepository(
+    public SqlServerMessagePersistenceRepository(
         MessagePersistenceDbContext persistenceDbContext,
-        ILogger<PostgresMessagePersistenceRepository> logger)
+        ILogger<SqlServerMessagePersistenceRepository> logger)
     {
         _persistenceDbContext = persistenceDbContext;
         _logger = logger;

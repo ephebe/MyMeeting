@@ -8,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMeeting.Services.Meetings.Application.Commands.Handlers;
+namespace MyMeeting.Services.Meetings.Application.MeetingGroupProposals;
 
 internal class ProposeMeetingGroupCommandHandler : ICommandHandler<ProposeMeetingGroupCommand, Guid>
 {
     private readonly IRepository<MeetingGroupProposal, MeetingGroupProposalId> _meetingGroupProposalRepository;
     private readonly IMemberContext _memberContext;
     internal ProposeMeetingGroupCommandHandler(
-            IRepository<MeetingGroupProposal,MeetingGroupProposalId> meetingGroupProposalRepository,
+            IRepository<MeetingGroupProposal, MeetingGroupProposalId> meetingGroupProposalRepository,
             IMemberContext memberContext)
     {
         _meetingGroupProposalRepository = meetingGroupProposalRepository;

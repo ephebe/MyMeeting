@@ -13,6 +13,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\building-blocks\BuildBlocks.Persistence.EfCore.SqlServer\BuildBlocks.Persistence.EfCore.SqlServer.csproj" />
     <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Core\BuildingBlocks.Core.csproj" />
+    <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Integration.MassTransit\BuildingBlocks.Integration.MassTransit.csproj" />
+    <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Messaging.Persistence.SqlServer\BuildingBlocks.Messaging.Persistence.SqlServer.csproj" />
     <ProjectReference Include="..\MyMeeting.Services.Meeting.Infrastructure\MyMeeting.Services.Meeting.Infrastructure.csproj" />
   </ItemGroup>
 
