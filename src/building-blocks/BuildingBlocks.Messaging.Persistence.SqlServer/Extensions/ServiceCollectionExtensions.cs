@@ -31,7 +31,7 @@ public static class ServiceCollectionExtensions
         {
             options.UseSqlServer(option.ConnectionString, sqlOptions =>
             {
-                sqlOptions.MigrationsAssembly(Assembly.GetExecutingAssembly().GetName().Name);
+                //sqlOptions.MigrationsAssembly(Assembly.GetExecutingAssembly().GetName().Name);
                 sqlOptions.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
             }).UseSnakeCaseNamingConvention();
         });

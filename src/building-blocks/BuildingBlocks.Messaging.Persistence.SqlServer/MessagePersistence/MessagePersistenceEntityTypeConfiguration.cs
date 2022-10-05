@@ -13,7 +13,7 @@ public class MessagePersistenceEntityTypeConfiguration : IEntityTypeConfiguratio
 {
     public void Configure(EntityTypeBuilder<StoreMessage> builder)
     {
-        builder.ToTable("StoreMessages", MessagePersistenceDbContext.DefaultSchema);
+        builder.ToTable("store_messages", MessagePersistenceDbContext.DefaultSchema);
 
         builder.HasKey(x => x.Id);
 

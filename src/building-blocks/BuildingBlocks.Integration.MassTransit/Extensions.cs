@@ -36,7 +36,7 @@ public static class Extensions
             configureBusRegistration?.Invoke(busRegistrationConfigurator);
 
             // https://masstransit-project.com/usage/configuration.html#receive-endpoints
-            busRegistrationConfigurator.AddConsumers(AppDomain.CurrentDomain.GetAssemblies());
+            //busRegistrationConfigurator.AddConsumers(AppDomain.CurrentDomain.GetAssemblies());
 
             // exclude namespace for the messages
             busRegistrationConfigurator.SetEndpointNameFormatter(new SnakeCaseEndpointNameFormatter(false));

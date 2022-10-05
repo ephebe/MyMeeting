@@ -5,6 +5,7 @@ using BuildingBlocks.Core.Persistence;
 using BuildingBlocks.Core.Registrations;
 using BuildingBlocks.Integration.MassTransit;
 using BuildingBlocks.Messaging.Persistence.SqlServer.Extensions;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using MyMeeting.Services.Meeting.Infrastructure;
 using MyMeeting.Services.Meeting.Infrastructure.Domain.MeetingGroupProposals;
 using MyMeeting.Services.Meetings.Core.MeetingGroupProposals;
@@ -21,6 +22,8 @@ await app.RunAsync();
 
 static void RegisterServices(WebApplicationBuilder builder) 
 {
+    builder.Services.AddControllers();
+
     builder.Services.AddSqlServerDbContext<MeetingsContext>(builder.Configuration);
     builder.Services.AddSqlServerRepository<MeetingGroupProposal, MeetingGroupProposalId, MeetingGroupProposalRepository>();
     builder.Services.AddUnitOfWork<MeetingsContext>(ServiceLifetime.Scoped);
@@ -47,5 +50,6 @@ static async Task ConfigureApplication(WebApplication app)
     app.UseRouting();
 
     app.MapControllers();
+
 
 }

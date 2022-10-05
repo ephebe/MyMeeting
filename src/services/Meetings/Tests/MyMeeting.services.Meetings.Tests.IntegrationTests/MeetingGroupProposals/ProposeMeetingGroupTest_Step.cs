@@ -26,7 +26,8 @@ namespace MyMeeting.services.Meetings.Tests.IntegrationTests.MeetingGroupProposa
             {
                 Name = "共進會",
                 LocationCity = "Taichung",
-                LocationCountryCode = "406"
+                LocationCountryCode = "406",
+                Description = ""
             };
         }
 

@@ -17,7 +17,7 @@ public class MeetingGroupProposalsController : ControllerBase
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IResult> ProposeMeetingGroup(ProposeMeetingGroupRequest request,CancellationToken cancellationToken)
+    public async Task<IResult> ProposeMeetingGroup([FromBody]ProposeMeetingGroupRequest request,CancellationToken cancellationToken)
     {
         var command = new ProposeMeetingGroupCommand(
            request.Name,
