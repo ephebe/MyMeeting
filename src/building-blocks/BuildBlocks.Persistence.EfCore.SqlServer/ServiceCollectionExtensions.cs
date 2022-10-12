@@ -20,8 +20,6 @@ public static class ServiceCollectionExtensions
         Action<DbContextOptionsBuilder>? builder = null)
         where TDbContext : DbContext, IDbFacadeResolver, IDomainEventContext
     {
-
-
         var config = configuration.GetSection(nameof(SqlServerOptions)).Get<SqlServerOptions>();
 
         services.Configure<SqlServerOptions>(configuration.GetSection(nameof(SqlServerOptions)));

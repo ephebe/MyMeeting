@@ -8,7 +8,7 @@ namespace MyMeeting.Services.Meeting.Infrastructure
     {
         public DbSet<MeetingGroupProposal> MeetingGroupProposals { get; set; }
 
-        public MeetingsContext(DbContextOptions options) : base(options)
+        public MeetingsContext(DbContextOptions<MeetingsContext> options) : base(options)
         {
         }
 

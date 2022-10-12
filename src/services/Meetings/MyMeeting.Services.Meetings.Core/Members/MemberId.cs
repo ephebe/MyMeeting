@@ -14,4 +14,8 @@ public record MemberId : AggregateId
     {
         Guard.Against.Null(value, nameof(value));
     }
+
+    public static implicit operator Guid(MemberId id) => id.Value;
+
+    public static implicit operator MemberId(Guid id) => new(id);
 }

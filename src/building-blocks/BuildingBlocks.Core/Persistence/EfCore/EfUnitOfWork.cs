@@ -2,6 +2,7 @@
 using BuildingBlocks.Abstractions.CQRS.Events.Internal;
 using BuildingBlocks.Abstractions.Persistence;
 using BuildingBlocks.Abstractions.Persistence.EfCore;
+using BuildingBlocks.Abstractions.Web;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -25,12 +26,14 @@ public class EfUnitOfWork<TDbContext> : IEfUnitOfWork<TDbContext>
         TDbContext context,
         IDomainEventsAccessor domainEventsAccessor,
         IDomainEventPublisher domainEventPublisher,
+        IExecutionContextAccessor executionContextAccessor,
         ILogger<EfUnitOfWork<TDbContext>> logger)
     {
         _context = context;
         _domainEventsAccessor = domainEventsAccessor;
         _domainEventPublisher = domainEventPublisher;
         _logger = logger;
+        context.UserId = executionContextAccessor.UserId;
     }
 
     public TDbContext DbContext => _context;

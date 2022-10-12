@@ -14,4 +14,8 @@ public record MeetingGroupProposalId : AggregateId
     {
         Guard.Against.NullOrEmpty(value, nameof(value));
     }
+
+    public static implicit operator Guid(MeetingGroupProposalId id) => id.Value;
+
+    public static implicit operator MeetingGroupProposalId(Guid id) => new(id);
 }

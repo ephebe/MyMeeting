@@ -53,7 +53,7 @@ public static class CQRSRegistrationExtensions
             .Add<IDomainEventPublisher, DomainEventPublisher>(serviceLifetime)
             .Add<IDomainNotificationEventPublisher, DomainNotificationEventPublisher>(serviceLifetime);
 
-        services.AddScoped<IDomainEventsAccessor, NullDomainEventsAccessor>();
+        //services.AddScoped<IDomainEventsAccessor, NullDomainEventsAccessor>();
 
         doMoreActions?.Invoke(services);
 

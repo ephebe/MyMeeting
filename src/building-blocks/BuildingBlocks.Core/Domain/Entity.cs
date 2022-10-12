@@ -15,7 +15,7 @@ public abstract class Entity<TId> : IEntity<TId>
     public TId Id { get; protected set; }
 
     public DateTime Created { get; protected set; }
-    public int? CreatedBy { get; protected set; }
+    public Guid? CreatedBy { get; protected set; }
 }
 
 public abstract class Entity<TIdentity, TId> : Entity<TIdentity>

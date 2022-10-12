@@ -17,11 +17,15 @@ public class MeetingGroupProposalEntityTypeConfiguration : IEntityTypeConfigurat
         builder.ToTable("meeting_group_proposals", "meetings");
 
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.Id);
+        builder.Property(x => x.Id)
+            .HasConversion(id => id.Value, id => id);
 
         builder.Property<string>("_name").HasColumnName("name");
         builder.Property<string>("_description").HasColumnName("description");
-        builder.Property<MemberId>("_proposalUserId").HasColumnName("proposal_user_id");
+        builder.Property<MemberId>("_proposalUserId")
+            .HasColumnName("proposal_user_id")
+            .HasConversion(id => id.Value, id => id);
+
         builder.Property<DateTime>("_proposalDate").HasColumnName("proposal_date");
 
         builder.OwnsOne<MeetingGroupLocation>("_location", b =>

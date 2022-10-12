@@ -24,6 +24,7 @@ public abstract class EfDbContextBase :
     // private readonly IDomainEventPublisher _domainEventPublisher;
 
     private IDbContextTransaction? _currentTransaction;
+    internal Guid UserId { get; set; }
 
     protected EfDbContextBase(DbContextOptions options) : base(options)
     {
@@ -156,11 +157,11 @@ public abstract class EfDbContextBase :
             {
                 case EntityState.Modified:
                     entry.CurrentValues[nameof(IHaveAudit.LastModified)] = now;
-                    entry.CurrentValues[nameof(IHaveAudit.LastModifiedBy)] = 1;
+                    entry.CurrentValues[nameof(IHaveAudit.LastModifiedBy)] = UserId;
                     break;
                 case EntityState.Added:
                     entry.CurrentValues[nameof(IHaveAudit.Created)] = now;
-                    entry.CurrentValues[nameof(IHaveAudit.CreatedBy)] = 1;
+                    entry.CurrentValues[nameof(IHaveAudit.CreatedBy)] = UserId;
                     break;
             }
         }
@@ -170,7 +171,7 @@ public abstract class EfDbContextBase :
             if (entry.State == EntityState.Added)
             {
                 entry.CurrentValues[nameof(IHaveCreator.Created)] = now;
-                entry.CurrentValues[nameof(IHaveCreator.CreatedBy)] = 1;
+                entry.CurrentValues[nameof(IHaveCreator.CreatedBy)] = UserId;
             }
         }
 

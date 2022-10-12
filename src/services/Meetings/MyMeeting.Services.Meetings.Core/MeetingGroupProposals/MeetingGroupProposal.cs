@@ -8,8 +8,6 @@ namespace MyMeeting.Services.Meetings.Core.MeetingGroupProposals;
 
 public class MeetingGroupProposal : Aggregate<MeetingGroupProposalId>
 {
-    public MeetingGroupProposalId Id { get; private set; }
-
     private string _name;
 
     private string _description;
