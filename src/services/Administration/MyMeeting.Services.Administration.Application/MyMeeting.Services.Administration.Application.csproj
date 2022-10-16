@@ -7,14 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTO\" />
-    <Folder Include="Events\Domain\Handlers\" />
-    <Folder Include="Queries\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Core\BuildingBlocks.Core.csproj" />
+    <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Integration.MassTransit\BuildingBlocks.Integration.MassTransit.csproj" />
     <ProjectReference Include="..\..\Shared\MyMeeting.Services.Shared\MyMeeting.Services.Shared.csproj" />
-    <ProjectReference Include="..\MyMeeting.Services.Meetings.Core\MyMeeting.Services.Meetings.Core.csproj" />
   </ItemGroup>
 
 </Project>

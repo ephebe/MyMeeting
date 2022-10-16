@@ -45,7 +45,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildBlocks.Persistence.EfC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlocks.Messaging.Persistence.SqlServer", "src\building-blocks\BuildingBlocks.Messaging.Persistence.SqlServer\BuildingBlocks.Messaging.Persistence.SqlServer.csproj", "{DA458BDC-0768-4AF8-A9EE-69B85F5FB83C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Integration.MassTransit", "src\building-blocks\BuildingBlocks.Integration.MassTransit\BuildingBlocks.Integration.MassTransit.csproj", "{A9901997-380C-4DBE-B203-75420126C0BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlocks.Integration.MassTransit", "src\building-blocks\BuildingBlocks.Integration.MassTransit\BuildingBlocks.Integration.MassTransit.csproj", "{A9901997-380C-4DBE-B203-75420126C0BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.Services.Administration.Api", "src\services\Administration\MyMeeting.Services.Administration.Api\MyMeeting.Services.Administration.Api.csproj", "{989423B3-275E-4B03-8FA3-2B9C4C683C11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.Services.Administration.Application", "src\services\Administration\MyMeeting.Services.Administration.Application\MyMeeting.Services.Administration.Application.csproj", "{B296D3BE-E49A-4476-B823-5B8CF9CA3DF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.Services.Administration.Core", "src\services\Administration\MyMeeting.Services.Administration.Core\MyMeeting.Services.Administration.Core.csproj", "{1530455B-270A-4F14-8441-9135F814317A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.Services.Administration.Infrastructure", "src\services\Administration\MyMeeting.Services.Administration.Infrastructure\MyMeeting.Services.Administration.Infrastructure.csproj", "{51E35C8E-0060-4E11-95B7-DE633B0335D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{53EA9757-777E-4B36-9FAE-C5B92B09AD7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.Services.Shared", "src\services\Shared\MyMeeting.Services.Shared\MyMeeting.Services.Shared.csproj", "{BC96BF1D-55E0-4F0F-9EAC-D53E2D23E158}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +109,26 @@ Global
 		{A9901997-380C-4DBE-B203-75420126C0BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9901997-380C-4DBE-B203-75420126C0BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9901997-380C-4DBE-B203-75420126C0BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{989423B3-275E-4B03-8FA3-2B9C4C683C11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{989423B3-275E-4B03-8FA3-2B9C4C683C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{989423B3-275E-4B03-8FA3-2B9C4C683C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{989423B3-275E-4B03-8FA3-2B9C4C683C11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B296D3BE-E49A-4476-B823-5B8CF9CA3DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B296D3BE-E49A-4476-B823-5B8CF9CA3DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B296D3BE-E49A-4476-B823-5B8CF9CA3DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B296D3BE-E49A-4476-B823-5B8CF9CA3DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1530455B-270A-4F14-8441-9135F814317A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1530455B-270A-4F14-8441-9135F814317A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1530455B-270A-4F14-8441-9135F814317A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1530455B-270A-4F14-8441-9135F814317A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51E35C8E-0060-4E11-95B7-DE633B0335D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51E35C8E-0060-4E11-95B7-DE633B0335D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51E35C8E-0060-4E11-95B7-DE633B0335D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51E35C8E-0060-4E11-95B7-DE633B0335D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC96BF1D-55E0-4F0F-9EAC-D53E2D23E158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC96BF1D-55E0-4F0F-9EAC-D53E2D23E158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC96BF1D-55E0-4F0F-9EAC-D53E2D23E158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC96BF1D-55E0-4F0F-9EAC-D53E2D23E158}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -121,6 +153,12 @@ Global
 		{C4D89073-197B-4A64-98BB-77A146D58C3A} = {7AA1BD5F-F8A1-4DB1-A6D9-B43691C1998A}
 		{DA458BDC-0768-4AF8-A9EE-69B85F5FB83C} = {7AA1BD5F-F8A1-4DB1-A6D9-B43691C1998A}
 		{A9901997-380C-4DBE-B203-75420126C0BA} = {7AA1BD5F-F8A1-4DB1-A6D9-B43691C1998A}
+		{989423B3-275E-4B03-8FA3-2B9C4C683C11} = {E18C9EFC-E7FB-4365-91FD-AB2E7D06FE83}
+		{B296D3BE-E49A-4476-B823-5B8CF9CA3DF1} = {E18C9EFC-E7FB-4365-91FD-AB2E7D06FE83}
+		{1530455B-270A-4F14-8441-9135F814317A} = {E18C9EFC-E7FB-4365-91FD-AB2E7D06FE83}
+		{51E35C8E-0060-4E11-95B7-DE633B0335D0} = {E18C9EFC-E7FB-4365-91FD-AB2E7D06FE83}
+		{53EA9757-777E-4B36-9FAE-C5B92B09AD7A} = {BCD230D6-D566-4DB9-B238-54150D9EB79E}
+		{BC96BF1D-55E0-4F0F-9EAC-D53E2D23E158} = {53EA9757-777E-4B36-9FAE-C5B92B09AD7A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F27E50BA-E1EE-4209-8B6B-6CAEF65A519C}

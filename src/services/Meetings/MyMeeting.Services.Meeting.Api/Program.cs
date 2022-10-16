@@ -34,13 +34,14 @@ static void RegisterServices(WebApplicationBuilder builder)
     builder.Services.AddSqlServerRepository<MeetingGroupProposal, MeetingGroupProposalId, MeetingGroupProposalRepository>();
     builder.Services.AddUnitOfWork<MeetingsContext>(ServiceLifetime.Scoped,true);
 
-    Assembly?[] assemblies = new[] { Assembly.GetAssembly(typeof(ProposeMeetingGroupCommandHandler)) };
+    Assembly?[] assemblies = new[] { Assembly.GetAssembly(typeof(ProposeMeetingGroupCommand)) };
     builder.Services.AddCore(builder.Configuration);
     builder.Services.AddCqrs(assemblies);
     builder.Services.AddSqlServerMessagePersistence(builder.Configuration);
     builder.Services.AddCustomMassTransit(
             builder.Configuration,
             builder.Environment);
+    builder.Services.AddAutoMapper(typeof(ProposeMeetingGroupCommand));
 
     builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     builder.Services.AddSingleton<IExecutionContextAccessor, ExecutionContextAccessor>();
