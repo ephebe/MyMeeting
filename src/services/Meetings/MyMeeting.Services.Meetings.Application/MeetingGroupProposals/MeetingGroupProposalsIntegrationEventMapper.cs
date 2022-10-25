@@ -41,6 +41,7 @@ public class MeetingGroupProposalsEventMapping : Profile
     public MeetingGroupProposalsEventMapping() 
     {
         CreateMap<MeetingGroupProposedDomainEvent, MeetingGroupProposedIntegrationEvent>()
-            .ForMember(x => x.MeetingGroupProposalId, y => y.MapFrom(o => o.MeetingGroupProposalId));
+            .ForMember(x => x.MeetingGroupProposalId, y => y.MapFrom(o => o.MeetingGroupProposalId.Value))
+            .ReverseMap();
     }
 }

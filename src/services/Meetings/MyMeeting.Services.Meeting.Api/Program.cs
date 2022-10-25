@@ -8,6 +8,7 @@ using BuildingBlocks.Core.Web;
 using BuildingBlocks.Integration.MassTransit;
 using BuildingBlocks.Messaging.Persistence.SqlServer.Extensions;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using MyMeeting.Services.Meeting.Api.Extensions;
 using MyMeeting.Services.Meeting.Infrastructure;
 using MyMeeting.Services.Meeting.Infrastructure.Domain.MeetingGroupProposals;
 using MyMeeting.Services.Meetings.Application.MeetingGroupProposals;
@@ -40,7 +41,11 @@ static void RegisterServices(WebApplicationBuilder builder)
     builder.Services.AddSqlServerMessagePersistence(builder.Configuration);
     builder.Services.AddCustomMassTransit(
             builder.Configuration,
-            builder.Environment);
+            builder.Environment,
+            (context, cfg) => 
+            {
+                cfg.AddMeetingGroupProposePublishers();
+            });
     builder.Services.AddAutoMapper(typeof(ProposeMeetingGroupCommand));
 
     builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

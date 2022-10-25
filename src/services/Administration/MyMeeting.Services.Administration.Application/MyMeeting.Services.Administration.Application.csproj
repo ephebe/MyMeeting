@@ -10,6 +10,7 @@
     <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Core\BuildingBlocks.Core.csproj" />
     <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Integration.MassTransit\BuildingBlocks.Integration.MassTransit.csproj" />
     <ProjectReference Include="..\..\Shared\MyMeeting.Services.Shared\MyMeeting.Services.Shared.csproj" />
+    <ProjectReference Include="..\MyMeeting.Services.Administration.Core\MyMeeting.Services.Administration.Core.csproj" />
   </ItemGroup>
 
 </Project>

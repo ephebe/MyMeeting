@@ -1,34 +1,67 @@
+using BuildBlocks.Persistence.EfCore.SqlServer;
+using BuildingBlocks.Abstractions.Web;
+using BuildingBlocks.Core.Registrations;
+using BuildingBlocks.Core.Web;
+using BuildingBlocks.Integration.MassTransit;
+using BuildingBlocks.Messaging.Persistence.SqlServer.Extensions;
+using MyMeeting.Services.Administration.Api.Extensions;
+using MyMeeting.Services.Administration.Application.MeetingGroupProposals;
+using MyMeeting.Services.Administration.Application.Users;
+using MyMeeting.Services.Administration.Core.MeetingGroupProposals;
+using MyMeeting.Services.Administration.Core.Users;
+using MyMeeting.Services.Administration.Infrastructure;
+using MyMeeting.Services.Administration.Infrastructure.Domain.MeetingGroupProposals;
+using System.Reflection;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+RegisterServices(builder);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+await ConfigureApplication(app);
 
-app.UseHttpsRedirection();
+await app.RunAsync();
 
-var summaries = new[]
+static void RegisterServices(WebApplicationBuilder builder)
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    builder.Services.AddControllers();
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateTime.Now.AddDays(index),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-});
+    builder.Services.AddSqlServerDbContext<AdministrationContext>(builder.Configuration);
+    builder.Services.AddSqlServerRepository<MeetingGroupProposal, MeetingGroupProposalId, MeetingGroupProposalRepository>();
+    builder.Services.AddUnitOfWork<AdministrationContext>(ServiceLifetime.Scoped, true);
 
-app.Run();
+    Assembly?[] assemblies = new[] { Assembly.GetAssembly(typeof(RequestMeetingGroupProposalVerificationCommand)) };
+    builder.Services.AddCore(builder.Configuration);
+    builder.Services.AddCqrs(assemblies);
+    builder.Services.AddSqlServerMessagePersistence(builder.Configuration);
+    builder.Services.AddCustomMassTransit(
+            builder.Configuration,
+            builder.Environment,
+            (context, cfg) =>
+            {
+                cfg.AddMeetingGroupProposedIntegrationEventEndpoints(context);
+            });
+    builder.Services.AddAutoMapper(typeof(RequestMeetingGroupProposalVerificationCommand));
 
-internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+    builder.Services.AddSingleton<IExecutionContextAccessor, ExecutionContextAccessor>();
+    builder.Services.AddTransient<IUserContext, UserContext>();
 }
+
+static async Task ConfigureApplication(WebApplication app)
+{
+    var environment = app.Environment;
+
+    if (environment.IsDevelopment() || environment.IsEnvironment("docker"))
+    {
+        app.UseDeveloperExceptionPage();
+    }
+
+    app.UseRouting();
+
+    app.MapControllers();
+
+
+}
+
