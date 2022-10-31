@@ -38,6 +38,7 @@ static void RegisterServices(WebApplicationBuilder builder)
     builder.Services.AddCustomMassTransit(
             builder.Configuration,
             builder.Environment,
+            assemblies,
             (context, cfg) =>
             {
                 cfg.AddMeetingGroupProposedIntegrationEventEndpoints(context);

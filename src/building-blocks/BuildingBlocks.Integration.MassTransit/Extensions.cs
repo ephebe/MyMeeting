@@ -14,6 +14,7 @@ using BuildingBlocks.Core.Messaging;
 using Microsoft.Extensions.Hosting;
 using BuildingBlocks.Core.Extensions;
 using BuildingBlocks.Abstractions.Persistence;
+using System.Reflection;
 
 namespace BuildingBlocks.Integration.MassTransit;
 
@@ -23,6 +24,7 @@ public static class Extensions
         this IServiceCollection services,
         IConfiguration configuration,
         IWebHostEnvironment env,
+        Assembly[]? assemblies = null,
         Action<IBusRegistrationContext, IRabbitMqBusFactoryConfigurator>? configureReceiveEndpoints = null,
         Action<IBusRegistrationConfigurator>? configureBusRegistration = null,
         bool autoConfigEndpoints = false)
@@ -36,7 +38,7 @@ public static class Extensions
             configureBusRegistration?.Invoke(busRegistrationConfigurator);
 
             // https://masstransit-project.com/usage/configuration.html#receive-endpoints
-            //busRegistrationConfigurator.AddConsumers(AppDomain.CurrentDomain.GetAssemblies());
+            busRegistrationConfigurator.AddConsumers(assemblies??AppDomain.CurrentDomain.GetAssemblies());
 
             // exclude namespace for the messages
             busRegistrationConfigurator.SetEndpointNameFormatter(new SnakeCaseEndpointNameFormatter(false));

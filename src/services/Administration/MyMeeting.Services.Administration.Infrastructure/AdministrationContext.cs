@@ -12,15 +12,13 @@ public class AdministrationContext : EfDbContextBase
     internal DbSet<MeetingGroupProposal> MeetingGroupProposals { get; set; }
     internal DbSet<Member> Members { get; set; }
 
-    public AdministrationContext(DbContextOptions options)
+    public AdministrationContext(DbContextOptions<AdministrationContext> options)
         : base(options)
     {
         
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.ApplyConfiguration(new MeetingGroupProposalEntityTypeConfiguration());
-        modelBuilder.ApplyConfiguration(new MemberEntityTypeConfiguration());
-    }
+         => modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
+   
 }

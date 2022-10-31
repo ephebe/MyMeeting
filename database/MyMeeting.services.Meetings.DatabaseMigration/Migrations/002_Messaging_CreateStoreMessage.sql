@@ -1,4 +1,5 @@
-﻿CREATE SCHEMA [messaging];  
+﻿CREATE SCHEMA [messaging]
+	AUTHORIZATION [dbo];  
 GO
 
 CREATE TABLE [messaging].[store_messages]

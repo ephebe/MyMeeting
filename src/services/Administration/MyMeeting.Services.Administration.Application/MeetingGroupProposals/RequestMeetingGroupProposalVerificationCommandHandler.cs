@@ -1,4 +1,5 @@
-﻿using BuildingBlocks.Abstractions.Persistence;
+﻿using BuildingBlocks.Abstractions.CQRS.Commands;
+using BuildingBlocks.Abstractions.Persistence;
 using MyMeeting.Services.Administration.Core.MeetingGroupProposals;
 using MyMeeting.Services.Administration.Core.Users;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MyMeeting.Services.Administration.Application.MeetingGroupProposals;
 
-public class RequestMeetingGroupProposalVerificationCommandHandler
+public class RequestMeetingGroupProposalVerificationCommandHandler : ICommandHandler<RequestMeetingGroupProposalVerificationCommand, Guid>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IRepository<MeetingGroupProposal, MeetingGroupProposalId> _meetingGroupProposalRepository;

@@ -24,6 +24,7 @@ public static class MassTransitExtensions
                 e.ExchangeType = ExchangeType.Direct;
             });
 
+            cfg.ConcurrentMessageLimit = 3;
             // https://github.com/MassTransit/MassTransit/discussions/3117
             // https://masstransit-project.com/usage/configuration.html#receive-endpoints
             re.ConfigureConsumer<MeetingGroupProposedIntegrationEventConsumer>(context);

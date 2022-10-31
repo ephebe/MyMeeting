@@ -1,4 +1,5 @@
-﻿CREATE SCHEMA [meetings];  
+﻿CREATE SCHEMA [meetings]
+    AUTHORIZATION [dbo];
 GO
 
 CREATE TABLE [meetings].[meeting_group_proposals]

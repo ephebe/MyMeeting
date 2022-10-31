@@ -1,4 +1,5 @@
-﻿using BuildingBlocks.Abstractions.Domain;
+﻿using Ardalis.GuardClauses;
+using BuildingBlocks.Abstractions.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,12 @@ namespace MyMeeting.Services.Administration.Core.MeetingGroupProposals;
 
 public record MeetingGroupProposalId : AggregateId
 {
-    public MeetingGroupProposalId(Guid value)
-            : base(value)
+    public MeetingGroupProposalId(Guid value) : base(value)
     {
+        Guard.Against.NullOrEmpty(value, nameof(value));
     }
+
+    public static implicit operator Guid(MeetingGroupProposalId id) => id.Value;
+
+    public static implicit operator MeetingGroupProposalId(Guid id) => new(id);
 }
