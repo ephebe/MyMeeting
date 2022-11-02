@@ -16,6 +16,8 @@ public class MemberEntityTypeConfiguration : IEntityTypeConfiguration<Member>
         builder.ToTable("members", "administration");
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+           .HasConversion(id => id.Value, id => id);
 
         builder.Property<string>("_login").HasColumnName("login");
         builder.Property<string>("_email").HasColumnName("email");
