@@ -16,6 +16,11 @@ CREATE TABLE [administration].[meeting_group_proposals] (
     [decision_user_id]       UNIQUEIDENTIFIER NULL,
     [decision_code]         NVARCHAR (50)    NULL,
     [decision_reject_reason] NVARCHAR (250)   NULL,
+    [created] DATETIME NOT NULL,
+    [created_by] UNIQUEIDENTIFIER NULL,
+    [last_modified] DATETIME NULL,
+    [last_modified_by] UNIQUEIDENTIFIER NULL,
+    [original_version] bigint NOT NULL
     CONSTRAINT [pk_administration_meeting_group_proposals_id] PRIMARY KEY CLUSTERED ([id] ASC)
 );
 
