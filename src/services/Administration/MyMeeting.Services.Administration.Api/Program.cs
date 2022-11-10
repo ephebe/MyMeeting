@@ -42,6 +42,7 @@ static void RegisterServices(WebApplicationBuilder builder)
             (context, cfg) =>
             {
                 cfg.AddMeetingGroupProposedIntegrationEventEndpoints(context);
+                cfg.AddMeetingGroupProposeAcceptedIntegrationEventPublishers();
             });
     builder.Services.AddAutoMapper(typeof(RequestMeetingGroupProposalVerificationCommand));
 

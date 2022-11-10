@@ -3,12 +3,13 @@ using MassTransit;
 using RabbitMQ.Client;
 using MyMeeting.Services.Administration.Application.MeetingGroupProposals;
 using MyMeeting.Services.Shared.Meetings.MeetingGroupProposals.Events.Integration;
+using MyMeeting.Services.Shared.Administration.MeetingGroupProposals.Events.Integration;
 
 namespace MyMeeting.Services.Administration.Api.Extensions;
 
-public static class MassTransitExtensions
+internal static class MassTransitExtensions
 {
-    public static void AddMeetingGroupProposedIntegrationEventEndpoints(this IRabbitMqBusFactoryConfigurator cfg, IBusRegistrationContext context)
+    internal static void AddMeetingGroupProposedIntegrationEventEndpoints(this IRabbitMqBusFactoryConfigurator cfg, IBusRegistrationContext context)
     {
         cfg.ReceiveEndpoint(nameof(MeetingGroupProposedIntegrationEvent).Underscore(), re =>
         {
@@ -30,6 +31,19 @@ public static class MassTransitExtensions
             re.ConfigureConsumer<MeetingGroupProposedIntegrationEventConsumer>(context);
 
             re.RethrowFaultedMessages();
+        });
+    }
+
+    internal static void AddMeetingGroupProposeAcceptedIntegrationEventPublishers(this IRabbitMqBusFactoryConfigurator cfg)
+    {
+        cfg.Message<MeetingGroupProposalAcceptedIntegrationEvent>(e =>
+            e.SetEntityName($"{nameof(MeetingGroupProposalAcceptedIntegrationEvent).Underscore()}.input_exchange")); // name of the primary exchange
+        cfg.Publish<MeetingGroupProposalAcceptedIntegrationEvent>(e => e.ExchangeType = ExchangeType.Direct); // primary exchange type
+        cfg.Send<MeetingGroupProposalAcceptedIntegrationEvent>(e =>
+        {
+            // route by message type to binding fanout exchange (exchange to exchange binding)
+            e.UseRoutingKeyFormatter(context =>
+                context.Message.GetType().Name.Underscore());
         });
     }
 }

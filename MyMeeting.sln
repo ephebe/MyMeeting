@@ -47,17 +47,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlocks.Messaging.Pe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlocks.Integration.MassTransit", "src\building-blocks\BuildingBlocks.Integration.MassTransit\BuildingBlocks.Integration.MassTransit.csproj", "{A9901997-380C-4DBE-B203-75420126C0BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.Services.Administration.Api", "src\services\Administration\MyMeeting.Services.Administration.Api\MyMeeting.Services.Administration.Api.csproj", "{989423B3-275E-4B03-8FA3-2B9C4C683C11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.Services.Administration.Api", "src\services\Administration\MyMeeting.Services.Administration.Api\MyMeeting.Services.Administration.Api.csproj", "{989423B3-275E-4B03-8FA3-2B9C4C683C11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.Services.Administration.Application", "src\services\Administration\MyMeeting.Services.Administration.Application\MyMeeting.Services.Administration.Application.csproj", "{B296D3BE-E49A-4476-B823-5B8CF9CA3DF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.Services.Administration.Application", "src\services\Administration\MyMeeting.Services.Administration.Application\MyMeeting.Services.Administration.Application.csproj", "{B296D3BE-E49A-4476-B823-5B8CF9CA3DF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.Services.Administration.Core", "src\services\Administration\MyMeeting.Services.Administration.Core\MyMeeting.Services.Administration.Core.csproj", "{1530455B-270A-4F14-8441-9135F814317A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.Services.Administration.Core", "src\services\Administration\MyMeeting.Services.Administration.Core\MyMeeting.Services.Administration.Core.csproj", "{1530455B-270A-4F14-8441-9135F814317A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.Services.Administration.Infrastructure", "src\services\Administration\MyMeeting.Services.Administration.Infrastructure\MyMeeting.Services.Administration.Infrastructure.csproj", "{51E35C8E-0060-4E11-95B7-DE633B0335D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.Services.Administration.Infrastructure", "src\services\Administration\MyMeeting.Services.Administration.Infrastructure\MyMeeting.Services.Administration.Infrastructure.csproj", "{51E35C8E-0060-4E11-95B7-DE633B0335D0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{53EA9757-777E-4B36-9FAE-C5B92B09AD7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.Services.Shared", "src\services\Shared\MyMeeting.Services.Shared\MyMeeting.Services.Shared.csproj", "{BC96BF1D-55E0-4F0F-9EAC-D53E2D23E158}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.Services.Shared", "src\services\Shared\MyMeeting.Services.Shared\MyMeeting.Services.Shared.csproj", "{BC96BF1D-55E0-4F0F-9EAC-D53E2D23E158}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.services.Administration.DatabaseMigration", "database\MyMeeting.services.Administration.DatabaseMigration\MyMeeting.services.Administration.DatabaseMigration.csproj", "{BF18034C-A852-4E1F-872E-743EBC83820F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,6 +131,10 @@ Global
 		{BC96BF1D-55E0-4F0F-9EAC-D53E2D23E158}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC96BF1D-55E0-4F0F-9EAC-D53E2D23E158}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC96BF1D-55E0-4F0F-9EAC-D53E2D23E158}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF18034C-A852-4E1F-872E-743EBC83820F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF18034C-A852-4E1F-872E-743EBC83820F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF18034C-A852-4E1F-872E-743EBC83820F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF18034C-A852-4E1F-872E-743EBC83820F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -159,6 +165,7 @@ Global
 		{51E35C8E-0060-4E11-95B7-DE633B0335D0} = {E18C9EFC-E7FB-4365-91FD-AB2E7D06FE83}
 		{53EA9757-777E-4B36-9FAE-C5B92B09AD7A} = {BCD230D6-D566-4DB9-B238-54150D9EB79E}
 		{BC96BF1D-55E0-4F0F-9EAC-D53E2D23E158} = {53EA9757-777E-4B36-9FAE-C5B92B09AD7A}
+		{BF18034C-A852-4E1F-872E-743EBC83820F} = {D2E661A9-F1E3-4C61-8BE1-38D7080831B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F27E50BA-E1EE-4209-8B6B-6CAEF65A519C}
