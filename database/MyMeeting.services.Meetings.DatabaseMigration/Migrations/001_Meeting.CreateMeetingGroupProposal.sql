@@ -1,8 +1,4 @@
-﻿CREATE SCHEMA [meetings]
-    AUTHORIZATION [dbo];
-GO
-
-CREATE TABLE [meetings].[meeting_group_proposals]
+﻿CREATE TABLE [meeting_group_proposals]
 (
 	[id] UNIQUEIDENTIFIER NOT NULL,
 	[name] NVARCHAR(255) NOT NULL,

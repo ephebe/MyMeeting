@@ -1,9 +1,4 @@
-﻿CREATE SCHEMA [administration]
-    AUTHORIZATION [dbo];  
-GO
-
-
-CREATE TABLE [administration].[meeting_group_proposals] (
+﻿CREATE TABLE [meeting_group_proposals] (
     [id]                   UNIQUEIDENTIFIER NOT NULL,
     [name]                 NVARCHAR (255)   NOT NULL,
     [description]          VARCHAR (200)    NULL,
@@ -26,7 +21,7 @@ CREATE TABLE [administration].[meeting_group_proposals] (
 
 GO
 
-CREATE TABLE [administration].[members] (
+CREATE TABLE [members] (
     [id]        UNIQUEIDENTIFIER NOT NULL,
     [login]     NVARCHAR (100)   NOT NULL,
     [email]     NVARCHAR (255)   NOT NULL,
