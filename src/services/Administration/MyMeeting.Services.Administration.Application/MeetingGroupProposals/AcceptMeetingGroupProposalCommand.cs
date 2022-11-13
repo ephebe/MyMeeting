@@ -15,5 +15,5 @@ public class AcceptMeetingGroupProposalCommand : ICommand<Unit>
         MeetingGroupProposalId = meetingGroupProposalId;
     }
 
-    internal Guid MeetingGroupProposalId { get; }
+    public Guid MeetingGroupProposalId { get; }
 }

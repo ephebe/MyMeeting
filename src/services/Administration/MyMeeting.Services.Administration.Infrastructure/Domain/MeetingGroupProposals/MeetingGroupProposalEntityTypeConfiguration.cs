@@ -14,7 +14,7 @@ internal class MeetingGroupProposalEntityTypeConfiguration : IEntityTypeConfigur
 {
     public void Configure(EntityTypeBuilder<MeetingGroupProposal> builder)
     {
-        builder.ToTable("meeting_group_proposals", "administration");
+        builder.ToTable("meeting_group_proposals");
 
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id)
