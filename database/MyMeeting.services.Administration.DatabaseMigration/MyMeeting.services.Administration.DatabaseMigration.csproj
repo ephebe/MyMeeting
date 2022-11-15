@@ -10,7 +10,8 @@
   <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="Migrations\001_Administration_CreateMeetingGroupProposal.sql" />
-    <None Remove="Migrations\002_Messaging_CreateStoreMessage.sql" />
+    <None Remove="Migrations\002_Administration_CreateStoreMessage.sql" />
+    <None Remove="Migrations\003_Administration_CreateMeetingGroupProposalsView.sql" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,7 +22,8 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Migrations\001_Administration_CreateMeetingGroupProposal.sql" />
-    <EmbeddedResource Include="Migrations\002_Messaging_CreateStoreMessage.sql" />
+    <EmbeddedResource Include="Migrations\002_Administration_CreateStoreMessage.sql" />
+    <EmbeddedResource Include="Migrations\003_Administration_CreateMeetingGroupProposalsView.sql" />
   </ItemGroup>
 
   <ItemGroup>

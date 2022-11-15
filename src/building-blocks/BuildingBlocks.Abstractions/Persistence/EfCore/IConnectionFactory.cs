@@ -10,4 +10,6 @@ namespace BuildingBlocks.Abstractions.Persistence.EfCore;
 public interface IConnectionFactory : IDisposable
 {
     IDbConnection GetOrCreateConnection();
+
+    string GetConnectionString();
 }

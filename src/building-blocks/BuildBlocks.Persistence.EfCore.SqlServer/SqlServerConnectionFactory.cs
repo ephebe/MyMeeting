@@ -36,6 +36,11 @@ public class SqlServerConnectionFactory : IConnectionFactory
         return _connection;
     }
 
+    public string GetConnectionString()
+    {
+        return _options.ConnectionString;
+    }
+
     public void Dispose()
     {
         if (_connection is { State: ConnectionState.Open })
