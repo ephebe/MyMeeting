@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Integration.MassTransit\BuildingBlocks.Integration.MassTransit.csproj" />
     <ProjectReference Include="..\..\Shared\MyMeeting.Services.Shared\MyMeeting.Services.Shared.csproj" />
     <ProjectReference Include="..\MyMeeting.Services.Meetings.Core\MyMeeting.Services.Meetings.Core.csproj" />
   </ItemGroup>

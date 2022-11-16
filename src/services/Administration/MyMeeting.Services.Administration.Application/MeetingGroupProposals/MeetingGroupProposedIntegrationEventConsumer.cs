@@ -23,11 +23,11 @@ public class MeetingGroupProposedIntegrationEventConsumer : IConsumer<MeetingGro
         _logger = logger;
     }
 
-    public Task Consume(ConsumeContext<MeetingGroupProposedIntegrationEvent> context)
+    public async Task Consume(ConsumeContext<MeetingGroupProposedIntegrationEvent> context)
     {
         var meetingGroupProposed = context.Message;
 
-         _commandProcessor.SendAsync(
+        await _commandProcessor.SendAsync(
             new RequestMeetingGroupProposalVerificationCommand(
             Guid.NewGuid(),
             meetingGroupProposed.MeetingGroupProposalId,
@@ -41,6 +41,5 @@ public class MeetingGroupProposedIntegrationEventConsumer : IConsumer<MeetingGro
         _logger.LogInformation(
             "Sending restock notification command for product {ProductId}",
             meetingGroupProposed.MeetingGroupProposalId);
-        return Task.CompletedTask;
     }
 }
