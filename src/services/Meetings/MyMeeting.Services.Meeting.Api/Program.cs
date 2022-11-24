@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using MyMeeting.Services.Meeting.Api.Extensions;
 using MyMeeting.Services.Meeting.Infrastructure;
 using MyMeeting.Services.Meeting.Infrastructure.Domain.MeetingGroupProposals;
+using MyMeeting.Services.Meetings.Api.MeetingGroupProposals;
 using MyMeeting.Services.Meetings.Application.MeetingGroupProposals;
 using MyMeeting.Services.Meetings.Application.Members;
 using MyMeeting.Services.Meetings.Core.MeetingGroupProposals;
@@ -35,7 +36,7 @@ static void RegisterServices(WebApplicationBuilder builder)
     builder.Services.AddSqlServerRepository<MeetingGroupProposal, MeetingGroupProposalId, MeetingGroupProposalRepository>();
     builder.Services.AddUnitOfWork<MeetingsContext>(ServiceLifetime.Scoped,true);
 
-    Assembly?[] assemblies = new[] { Assembly.GetAssembly(typeof(ProposeMeetingGroupCommand)) };
+    Assembly?[] assemblies = new[] { Assembly.GetAssembly(typeof(MeetingGroupProposalAcceptedIntegrationEventConsumer)) };
     builder.Services.AddCore(builder.Configuration);
     builder.Services.AddCqrs(assemblies);
     builder.Services.AddSqlServerMessagePersistence(builder.Configuration);
@@ -45,7 +46,8 @@ static void RegisterServices(WebApplicationBuilder builder)
             assemblies,
             (context, cfg) => 
             {
-                cfg.AddMeetingGroupProposePublishers();
+                cfg.AddMeetingGroupProposeIntegrationEventPublishers();
+                cfg.AddMeetingGroupProposalAcceptedIntegrationEventEndpoints(context);
             });
     builder.Services.AddAutoMapper(typeof(ProposeMeetingGroupCommand));
 

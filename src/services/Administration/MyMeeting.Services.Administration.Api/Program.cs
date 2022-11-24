@@ -5,6 +5,7 @@ using BuildingBlocks.Core.Web;
 using BuildingBlocks.Integration.MassTransit;
 using BuildingBlocks.Messaging.Persistence.SqlServer.Extensions;
 using MyMeeting.Services.Administration.Api.Extensions;
+using MyMeeting.Services.Administration.Api.MeetingGroupProposals;
 using MyMeeting.Services.Administration.Application.MeetingGroupProposals;
 using MyMeeting.Services.Administration.Application.Users;
 using MyMeeting.Services.Administration.Core.MeetingGroupProposals;
@@ -31,7 +32,7 @@ static void RegisterServices(WebApplicationBuilder builder)
     builder.Services.AddSqlServerRepository<MeetingGroupProposal, MeetingGroupProposalId, MeetingGroupProposalRepository>();
     builder.Services.AddUnitOfWork<AdministrationContext>(ServiceLifetime.Scoped, true);
 
-    Assembly?[] assemblies = new[] { Assembly.GetAssembly(typeof(RequestMeetingGroupProposalVerificationCommand)) };
+    Assembly?[] assemblies = new[] { Assembly.GetAssembly(typeof(MeetingGroupProposedIntegrationEventConsumer)) };
     builder.Services.AddCore(builder.Configuration);
     builder.Services.AddCqrs(assemblies);
     builder.Services.AddSqlServerMessagePersistence(builder.Configuration);

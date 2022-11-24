@@ -1,6 +1,7 @@
 ﻿using BuildingBlocks.Abstractions.CQRS.Commands;
 using BuildingBlocks.Abstractions.Persistence;
 using MyMeeting.Services.Meetings.Core.MeetingGroupProposals;
+using MyMeeting.Services.Meetings.Core.MeetingGroups;
 using MyMeeting.Services.Meetings.Core.Members;
 using System;
 using System.Collections.Generic;

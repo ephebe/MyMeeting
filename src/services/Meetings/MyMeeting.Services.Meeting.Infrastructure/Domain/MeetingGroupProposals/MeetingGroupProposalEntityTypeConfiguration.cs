@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyMeeting.Services.Meetings.Core.MeetingGroupProposals;
+using MyMeeting.Services.Meetings.Core.MeetingGroups;
 using MyMeeting.Services.Meetings.Core.Members;
 using System;
 using System.Collections.Generic;

@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMeeting.Services.Meetings.Core.Types;
+namespace MyMeeting.Services.Meetings.Core.Meetings;
 
-public record MeetingGroupId : AggregateId
+public record MeetingId : AggregateId
 {
-    public MeetingGroupId(Guid value) : base(value)
+    public MeetingId(Guid value) : base(value)
     {
         Guard.Against.NullOrEmpty(value, nameof(value));
     }

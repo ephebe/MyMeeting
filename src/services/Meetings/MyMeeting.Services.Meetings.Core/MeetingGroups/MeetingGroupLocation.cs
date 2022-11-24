@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMeeting.Services.Meetings.Core.MeetingGroupProposals;
+namespace MyMeeting.Services.Meetings.Core.MeetingGroups;
 
 public class MeetingGroupLocation : ValueObject
 {

@@ -2,6 +2,7 @@
 using BuildingBlocks.Core.Utils;
 using MyMeeting.Services.Meetings.Core.MeetingGroupProposals.Events;
 using MyMeeting.Services.Meetings.Core.MeetingGroupProposals.Rules;
+using MyMeeting.Services.Meetings.Core.MeetingGroups;
 using MyMeeting.Services.Meetings.Core.Members;
 
 namespace MyMeeting.Services.Meetings.Core.MeetingGroupProposals;
@@ -19,6 +20,11 @@ public class MeetingGroupProposal : Aggregate<MeetingGroupProposalId>
     private MemberId _proposalUserId;
 
     private MeetingGroupProposalStatus _status;
+
+    public MeetingGroup CreateMeetingGroup()
+    {
+        return MeetingGroup.CreateBasedOnProposal(this.Id, _name, _description, _location, _proposalUserId);
+    }
 
     private MeetingGroupProposal()
     {
