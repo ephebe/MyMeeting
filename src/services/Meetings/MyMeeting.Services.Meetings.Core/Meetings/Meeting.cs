@@ -1,4 +1,7 @@
 ﻿using BuildingBlocks.Core.Domain;
+using BuildingBlocks.Core.Utils;
+using MyMeeting.Services.Meetings.Core.MeetingGroups;
+using MyMeeting.Services.Meetings.Core.Members;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -108,7 +111,7 @@ public class Meeting : Aggregate<MeetingId>
         _notAttendees = new List<MeetingNotAttendee>();
         _waitlistMembers = new List<MeetingWaitlistMember>();
 
-        this.AddDomainEvent(new MeetingCreatedDomainEvent(this.Id));
+        this.AddDomainEvents(new MeetingCreatedDomainEvent(this.Id));
         var rsvpDate = SystemClock.Now;
         if (hostsMembersIds.Any())
         {
@@ -148,7 +151,7 @@ public class Meeting : Aggregate<MeetingId>
         _changeDate = SystemClock.Now;
         _changeMemberId = modifyUserId;
 
-        this.AddDomainEvent(new MeetingMainAttributesChangedDomainEvent(this.Id));
+        this.AddDomainEvents(new MeetingMainAttributesChangedDomainEvent(this.Id));
     }
 
     public void AddAttendee(MeetingGroup meetingGroup, MemberId attendeeId, int guestsNumber)
@@ -283,7 +286,7 @@ public class Meeting : Aggregate<MeetingId>
             _cancelDate = SystemClock.Now;
             _cancelMemberId = cancelMemberId;
 
-            this.AddDomainEvent(new MeetingCanceledDomainEvent(this.Id, _cancelMemberId, _cancelDate.Value));
+            this.AddDomainEvents(new MeetingCanceledDomainEvent(this.Id, _cancelMemberId, _cancelDate.Value));
         }
     }
 
