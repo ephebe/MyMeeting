@@ -3,6 +3,7 @@ using BuildingBlocks.Core.Utils;
 using MyMeeting.Services.Meetings.Core.MeetingGroupProposals;
 using MyMeeting.Services.Meetings.Core.MeetingGroups.Events;
 using MyMeeting.Services.Meetings.Core.MeetingGroups.Rules;
+using MyMeeting.Services.Meetings.Core.Meetings;
 using MyMeeting.Services.Meetings.Core.Members;
 using System;
 using System.Collections.Generic;
@@ -63,8 +64,6 @@ public class MeetingGroup : Aggregate<MeetingGroupId>
         this._name = name;
         this._description = description;
         this._location = location;
-
-        this.AddDomainEvents(new MeetingGroupGeneralAttributesEditedDomainEvent(this._name, this._description, this._location));
     }
 
     public void JoinToGroupMember(MemberId memberId)

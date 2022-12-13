@@ -1,10 +1,17 @@
 ﻿using BuildingBlocks.Core.Domain;
 using BuildingBlocks.Core.Utils;
+using MyMeeting.Services.Meetings.Core.MeetingCommentingConfigurations;
+using MyMeeting.Services.Meetings.Core.MeetingComments;
 using MyMeeting.Services.Meetings.Core.MeetingGroups;
+using MyMeeting.Services.Meetings.Core.MeetingGroups.Events;
+using MyMeeting.Services.Meetings.Core.Meetings.Events;
+using MyMeeting.Services.Meetings.Core.Meetings.Rules;
 using MyMeeting.Services.Meetings.Core.Members;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,8 +19,6 @@ namespace MyMeeting.Services.Meetings.Core.Meetings;
 
 public class Meeting : Aggregate<MeetingId>
 {
-    public MeetingId Id { get; private set; }
-
     private MeetingGroupId _meetingGroupId;
 
     private string _title;
@@ -117,12 +122,16 @@ public class Meeting : Aggregate<MeetingId>
         {
             foreach (var hostMemberId in hostsMembersIds)
             {
-                _attendees.Add(MeetingAttendee.CreateNew(this.Id, hostMemberId, rsvpDate, MeetingAttendeeRole.Host, 0, MoneyValue.Undefined));
+                var attendee = MeetingAttendee.CreateNew(this.Id, hostMemberId, rsvpDate, MeetingAttendeeRole.Host, 0, MoneyValue.Undefined);
+                _attendees.Add(attendee);
+                this.AddDomainEvents(attendee.MeetingAttendeeAddedDomainEvent);
             }
         }
         else
         {
-            _attendees.Add(MeetingAttendee.CreateNew(this.Id, creatorId, rsvpDate, MeetingAttendeeRole.Host, 0, MoneyValue.Undefined));
+            var attendee = MeetingAttendee.CreateNew(this.Id, creatorId, rsvpDate, MeetingAttendeeRole.Host, 0, MoneyValue.Undefined);
+            _attendees.Add(attendee);
+            this.AddDomainEvents(attendee.MeetingAttendeeAddedDomainEvent);
         }
     }
 
@@ -150,8 +159,6 @@ public class Meeting : Aggregate<MeetingId>
 
         _changeDate = SystemClock.Now;
         _changeMemberId = modifyUserId;
-
-        this.AddDomainEvents(new MeetingMainAttributesChangedDomainEvent(this.Id));
     }
 
     public void AddAttendee(MeetingGroup meetingGroup, MemberId attendeeId, int guestsNumber)
@@ -171,13 +178,18 @@ public class Meeting : Aggregate<MeetingId>
         var notAttendee = this.GetActiveNotAttendee(attendeeId);
         notAttendee?.ChangeDecision();
 
-        _attendees.Add(MeetingAttendee.CreateNew(
+        MeetingAttendeeAddedDomainEvent meetingAttendeeAddedDomainEvent = null;
+        var attendee = MeetingAttendee.CreateNew(
             this.Id,
             attendeeId,
             SystemClock.Now,
             MeetingAttendeeRole.Attendee,
             guestsNumber,
-            _eventFee));
+            _eventFee);
+
+        _attendees.Add(attendee);
+
+        this.AddDomainEvents(attendee.MeetingAttendeeAddedDomainEvent);
     }
 
     public void AddNotAttendee(MemberId memberId)
@@ -190,12 +202,17 @@ public class Meeting : Aggregate<MeetingId>
 
         var attendee = this.GetActiveAttendee(memberId);
 
-        attendee?.ChangeDecision();
+        if (attendee != null) 
+        {
+            attendee.ChangeDecision();
+            this.AddDomainEvents(attendee.MeetingAttendeeChangedDecisionDomainEvent);
+        }
 
         var nextWaitlistMember = _waitlistMembers
             .Where(x => x.IsActive())
             .OrderBy(x => x.SignUpDate)
             .FirstOrDefault();
+
         if (nextWaitlistMember != null)
         {
             _attendees.Add(MeetingAttendee.CreateNew(
@@ -254,7 +271,8 @@ public class Meeting : Aggregate<MeetingId>
 
         var attendee = this.GetActiveAttendee(newOrganizerId);
 
-        attendee.SetAsHost();
+        attendee.SetAsHost(out NewMeetingHostSetDomainEvent newMeetingHostSetDomainEvent);
+        this.AddDomainEvents(newMeetingHostSetDomainEvent);
     }
 
     public void SetAttendeeRole(MeetingGroup meetingGroup, MemberId settingMemberId, MemberId newOrganizerId)

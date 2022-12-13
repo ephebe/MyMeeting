@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.Abstractions.Domain;
+using BuildingBlocks.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;

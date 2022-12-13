@@ -1,9 +1,12 @@
 ﻿using BuildingBlocks.Core.Domain;
 using BuildingBlocks.Core.Utils;
+using MyMeeting.Services.Meetings.Core.MeetingGroups.Events;
+using MyMeeting.Services.Meetings.Core.Meetings.Events;
 using MyMeeting.Services.Meetings.Core.Members;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,6 +44,30 @@ public class MeetingAttendee : Entity
     {
     }
 
+    public MeetingAttendeeAddedDomainEvent MeetingAttendeeAddedDomainEvent 
+    {
+        get 
+        {
+            return new MeetingAttendeeAddedDomainEvent(
+                this.MeetingId,
+                this.AttendeeId,
+                this._decisionDate,
+                this._role.Value,
+                this._guestsNumber,
+                this._fee.Value,
+                this._fee.Currency
+            );
+        }
+    }
+
+    public MeetingAttendeeChangedDecisionDomainEvent MeetingAttendeeChangedDecisionDomainEvent 
+    {
+        get 
+        {
+            return new MeetingAttendeeChangedDecisionDomainEvent(this.AttendeeId, this.MeetingId);
+        }
+    }
+
     internal static MeetingAttendee CreateNew(
         MeetingId meetingId,
         MemberId attendeeId,
@@ -49,7 +76,10 @@ public class MeetingAttendee : Entity
         int guestsNumber,
         MoneyValue eventFee)
     {
-        return new MeetingAttendee(meetingId, attendeeId, decisionDate, role, guestsNumber, eventFee);
+        var meetingAttendee = 
+            new MeetingAttendee(meetingId, attendeeId, decisionDate, role, guestsNumber, eventFee);
+
+        return meetingAttendee;
     }
 
     private MeetingAttendee(
@@ -76,23 +106,12 @@ public class MeetingAttendee : Entity
         {
             _fee = MoneyValue.Undefined;
         }
-
-        this.AddDomainEvent(new MeetingAttendeeAddedDomainEvent(
-            this.MeetingId,
-            AttendeeId,
-            decisionDate,
-            role.Value,
-            guestsNumber,
-            _fee.Value,
-            _fee.Currency));
     }
 
     internal void ChangeDecision()
     {
         _decisionChanged = true;
         _decisionChangeDate = SystemClock.Now;
-
-        this.AddDomainEvent(new MeetingAttendeeChangedDecisionDomainEvent(this.AttendeeId, this.MeetingId));
     }
 
     internal bool IsActiveAttendee(MemberId attendeeId)
@@ -115,11 +134,11 @@ public class MeetingAttendee : Entity
         return 1 + _guestsNumber;
     }
 
-    internal void SetAsHost()
+    internal void SetAsHost(out NewMeetingHostSetDomainEvent @event)
     {
         _role = MeetingAttendeeRole.Host;
 
-        this.AddDomainEvent(new NewMeetingHostSetDomainEvent(this.MeetingId, this.AttendeeId));
+        @event = new NewMeetingHostSetDomainEvent(this.MeetingId, this.AttendeeId);
     }
 
     internal void SetAsAttendee()

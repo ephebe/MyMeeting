@@ -1,4 +1,6 @@
 ﻿using BuildingBlocks.Core.Domain;
+using BuildingBlocks.Core.Utils;
+using MyMeeting.Services.Meetings.Core.Members;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,6 +65,6 @@ public class MeetingWaitlistMember : Entity
         _isSignedOff = true;
         _signOffDate = SystemClock.Now;
 
-        this.AddDomainEvent(new MemberSignedOffFromMeetingWaitlistDomainEvent(this.MeetingId, this.MemberId));
+        this.AddDomainEvents(new MemberSignedOffFromMeetingWaitlistDomainEvent(this.MeetingId, this.MemberId));
     }
 }
