@@ -12,7 +12,7 @@ using MyMeeting.Services.Meeting.Api.Extensions;
 using MyMeeting.Services.Meeting.Infrastructure;
 using MyMeeting.Services.Meeting.Infrastructure.Domain.MeetingGroupProposals;
 using MyMeeting.Services.Meetings.Api.MeetingGroupProposals;
-using MyMeeting.Services.Meetings.Application.MeetingGroupProposals;
+using MyMeeting.Services.Meetings.Application.MeetingGroupProposals.ProposeMeetingGroup;
 using MyMeeting.Services.Meetings.Application.Members;
 using MyMeeting.Services.Meetings.Core.MeetingGroupProposals;
 using MyMeeting.Services.Meetings.Core.Members;

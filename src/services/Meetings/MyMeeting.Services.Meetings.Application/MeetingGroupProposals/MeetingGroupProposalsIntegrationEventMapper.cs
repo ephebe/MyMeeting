@@ -17,7 +17,7 @@ public class MeetingGroupProposalsIntegrationEventMapper : IIntegrationEventMapp
 {
     private readonly IMapper _mapper;
 
-    public MeetingGroupProposalsIntegrationEventMapper(IMapper mapper) 
+    public MeetingGroupProposalsIntegrationEventMapper(IMapper mapper)
     {
         _mapper = mapper;
     }
@@ -38,11 +38,11 @@ public class MeetingGroupProposalsIntegrationEventMapper : IIntegrationEventMapp
 
 public class MeetingGroupProposalsEventMapping : Profile
 {
-    public MeetingGroupProposalsEventMapping() 
+    public MeetingGroupProposalsEventMapping()
     {
         CreateMap<MeetingGroupProposedDomainEvent, MeetingGroupProposedIntegrationEvent>()
             .ForMember(target => target.MeetingGroupProposalId, from => from.MapFrom(o => o.MeetingGroupProposalId.Value))
-            .ForMember(target => target.Name, from => from.MapFrom(o => o.Name)) 
+            .ForMember(target => target.Name, from => from.MapFrom(o => o.Name))
             .ForMember(target => target.LocationCity, from => from.MapFrom(o => o.LocationCity))
             .ForMember(target => target.LocationCountryCode, from => from.MapFrom(o => o.LocationCountryCode))
             .ForMember(target => target.ProposalUserId, from => from.MapFrom(o => o.ProposalUserId.Value))

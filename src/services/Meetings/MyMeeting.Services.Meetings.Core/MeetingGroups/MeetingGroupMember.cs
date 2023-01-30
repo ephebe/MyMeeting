@@ -1,5 +1,6 @@
 ﻿using BuildingBlocks.Core.Domain;
 using BuildingBlocks.Core.Utils;
+using MyMeeting.Services.Meetings.Core.MeetingGroups.Events;
 using MyMeeting.Services.Meetings.Core.Members;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,11 @@ public class MeetingGroupMember : Entity
 
     private DateTime? _leaveDate;
 
+    public NewMeetingGroupMemberJoinedDomainEvent NewMeetingGroupMemberJoinedDomainEvent
+        => new NewMeetingGroupMemberJoinedDomainEvent(this.MeetingGroupId, this.MemberId, this._role);
+
+    public MeetingGroupMemberLeftGroupDomainEvent MeetingGroupMemberLeftGroupDomainEvent
+        => new MeetingGroupMemberLeftGroupDomainEvent(this.MeetingGroupId, this.MemberId);
     private MeetingGroupMember()
     {
         // Only for EF.

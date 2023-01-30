@@ -1,5 +1,6 @@
 ﻿using BuildingBlocks.Core.Domain;
 using BuildingBlocks.Core.Utils;
+using MyMeeting.Services.Meetings.Core.Meetings.Events;
 using MyMeeting.Services.Meetings.Core.Members;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,12 @@ public class MeetingNotAttendee : Entity
 
     private DateTime? _decisionChangeDate;
 
+    internal MeetingNotAttendeeAddedDomainEvent MeetingNotAttendeeAddedDomainEvent
+        => new MeetingNotAttendeeAddedDomainEvent(this.MeetingId, this.MemberId);
+
+    internal MeetingNotAttendeeChangedDecisionDomainEvent MeetingNotAttendeeChangedDecisionDomainEvent
+        => new MeetingNotAttendeeChangedDecisionDomainEvent(this.MemberId, this.MeetingId);
+
     private MeetingNotAttendee()
     {
     }
@@ -31,7 +38,7 @@ public class MeetingNotAttendee : Entity
         this.MeetingId = meetingId;
         _decisionDate = DateTime.UtcNow;
 
-        this.AddDomainEvent(new MeetingNotAttendeeAddedDomainEvent(this.MeetingId, this.MemberId));
+        
     }
 
     internal static MeetingNotAttendee CreateNew(MeetingId meetingId, MemberId memberId)
@@ -48,7 +55,5 @@ public class MeetingNotAttendee : Entity
     {
         _decisionChanged = true;
         _decisionChangeDate = SystemClock.Now;
-
-        this.AddDomainEvent(new MeetingNotAttendeeChangedDecisionDomainEvent(this.MemberId, this.MeetingId));
     }
 }

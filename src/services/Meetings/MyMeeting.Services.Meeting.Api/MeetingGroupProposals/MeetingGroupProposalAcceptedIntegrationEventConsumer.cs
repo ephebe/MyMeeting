@@ -2,6 +2,7 @@
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using MyMeeting.Services.Meetings.Application.MeetingGroupProposals;
+using MyMeeting.Services.Meetings.Application.MeetingGroupProposals.AcceptMeetingGroupProposal;
 using MyMeeting.Services.Shared.Administration.MeetingGroupProposals.Events.Integration;
 using System;
 using System.Collections.Generic;

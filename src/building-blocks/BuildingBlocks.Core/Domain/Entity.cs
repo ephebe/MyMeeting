@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.Abstractions.Domain;
+using BuildingBlocks.Core.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,14 @@ public abstract class Entity<TId> : IEntity<TId>
 
     public DateTime Created { get; protected set; }
     public Guid? CreatedBy { get; protected set; }
+
+    public void CheckRule(IBusinessRule rule)
+    {
+        if (rule.IsBroken())
+        {
+            throw new BusinessRuleValidationException(rule);
+        }
+    }
 }
 
 public abstract class Entity<TIdentity, TId> : Entity<TIdentity>

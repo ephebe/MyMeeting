@@ -70,9 +70,10 @@ public class MeetingGroup : Aggregate<MeetingGroupId>
     {
         this.CheckRule(new MeetingGroupMemberCannotBeAddedTwiceRule(_members, memberId));
 
-        this._members.Add(MeetingGroupMember.CreateNew(this.Id, memberId, MeetingGroupMemberRole.Member));
+        var member = MeetingGroupMember.CreateNew(this.Id, memberId, MeetingGroupMemberRole.Member);
+        this._members.Add(member);
 
-        this.AddDomainEvents(new NewMeetingGroupMemberJoinedDomainEvent(this.Id, memberId, MeetingGroupMemberRole.Member));
+        this.AddDomainEvents(member.NewMeetingGroupMemberJoinedDomainEvent);
     }
 
     public void LeaveGroup(MemberId memberId)
@@ -83,7 +84,7 @@ public class MeetingGroup : Aggregate<MeetingGroupId>
 
         member.Leave();
 
-        this.AddDomainEvents(new MeetingGroupMemberLeftGroupDomainEvent(this.Id, member.MemberId));
+        this.AddDomainEvents(member.MeetingGroupMemberLeftGroupDomainEvent);
     }
 
     public void SetExpirationDate(DateTime dateTo)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BuildingBlocks.Abstractions.Domain;
+using BuildingBlocks.Core.Domain.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -61,4 +63,12 @@ public abstract class ValueObject : IEquatable<ValueObject>
 
     public static bool operator !=(ValueObject left, ValueObject right)
         => !(left == right);
+
+    protected static void CheckRule(IBusinessRule rule)
+    {
+        if (rule.IsBroken())
+        {
+            throw new BusinessRuleValidationException(rule);
+        }
+    }
 }

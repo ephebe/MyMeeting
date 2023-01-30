@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.Core.Domain;
+using MyMeeting.Services.Meetings.Core.Meetings.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;

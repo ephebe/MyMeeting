@@ -1,7 +1,9 @@
-﻿using BuildingBlocks.Core.Domain;
+﻿using BuildingBlocks.Abstractions.Domain;
+using BuildingBlocks.Core.Domain;
 using BuildingBlocks.Core.Utils;
 using MyMeeting.Services.Meetings.Core.MeetingGroups.Events;
 using MyMeeting.Services.Meetings.Core.Meetings.Events;
+using MyMeeting.Services.Meetings.Core.Meetings.Rules;
 using MyMeeting.Services.Meetings.Core.Members;
 using System;
 using System.Collections.Generic;
@@ -45,10 +47,7 @@ public class MeetingAttendee : Entity
     }
 
     public MeetingAttendeeAddedDomainEvent MeetingAttendeeAddedDomainEvent 
-    {
-        get 
-        {
-            return new MeetingAttendeeAddedDomainEvent(
+        =>  new MeetingAttendeeAddedDomainEvent(
                 this.MeetingId,
                 this.AttendeeId,
                 this._decisionDate,
@@ -57,16 +56,23 @@ public class MeetingAttendee : Entity
                 this._fee.Value,
                 this._fee.Currency
             );
-        }
-    }
+
+    public NewMeetingHostSetDomainEvent NewMeetingHostSetDomainEvent
+        => new NewMeetingHostSetDomainEvent(this.MeetingId, this.AttendeeId);
 
     public MeetingAttendeeChangedDecisionDomainEvent MeetingAttendeeChangedDecisionDomainEvent 
+        =>  new MeetingAttendeeChangedDecisionDomainEvent(this.AttendeeId, this.MeetingId);
+        
+    internal MemberSetAsAttendeeDomainEvent MemberSetAsAttendeeDomainEvent
+        => new MemberSetAsAttendeeDomainEvent(this.MeetingId, this.AttendeeId);
+
+    internal MeetingAttendeeRemovedDomainEvent MeetingAttendeeRemovedDomainEvent
     {
-        get 
-        {
-            return new MeetingAttendeeChangedDecisionDomainEvent(this.AttendeeId, this.MeetingId);
-        }
+        get;private set;
     }
+
+    internal MeetingAttendeeFeePaidDomainEvent MeetingAttendeeFeePaidDomainEvent
+        => new MeetingAttendeeFeePaidDomainEvent(this.MeetingId, this.AttendeeId);
 
     internal static MeetingAttendee CreateNew(
         MeetingId meetingId,
@@ -134,19 +140,15 @@ public class MeetingAttendee : Entity
         return 1 + _guestsNumber;
     }
 
-    internal void SetAsHost(out NewMeetingHostSetDomainEvent @event)
+    internal void SetAsHost()
     {
         _role = MeetingAttendeeRole.Host;
-
-        @event = new NewMeetingHostSetDomainEvent(this.MeetingId, this.AttendeeId);
     }
 
     internal void SetAsAttendee()
     {
         this.CheckRule(new MemberCannotHaveSetAttendeeRoleMoreThanOnceRule(_role));
         _role = MeetingAttendeeRole.Attendee;
-
-        this.AddDomainEvent(new MemberSetAsAttendeeDomainEvent(this.MeetingId, this.AttendeeId));
     }
 
     internal void Remove(MemberId removingMemberId, string reason)
@@ -158,13 +160,11 @@ public class MeetingAttendee : Entity
         _removingReason = reason;
         _removingMemberId = removingMemberId;
 
-        this.AddDomainEvent(new MeetingAttendeeRemovedDomainEvent(this.AttendeeId, this.MeetingId, reason));
+        this.MeetingAttendeeRemovedDomainEvent = new MeetingAttendeeRemovedDomainEvent(this.AttendeeId, this.MeetingId, reason);
     }
 
     internal void MarkFeeAsPayed()
     {
         _isFeePaid = true;
-
-        this.AddDomainEvent(new MeetingAttendeeFeePaidDomainEvent(this.MeetingId, this.AttendeeId));
     }
 }

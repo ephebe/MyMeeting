@@ -176,9 +176,12 @@ public class Meeting : Aggregate<MeetingId>
         this.CheckRule(new MeetingAttendeesNumberIsAboveLimitRule(_meetingLimits.AttendeesLimit, this.GetAllActiveAttendeesWithGuestsNumber(), guestsNumber));
 
         var notAttendee = this.GetActiveNotAttendee(attendeeId);
-        notAttendee?.ChangeDecision();
+        if (notAttendee != null) 
+        {
+            notAttendee.ChangeDecision();
+            this.AddDomainEvents(notAttendee.MeetingNotAttendeeChangedDecisionDomainEvent);
+        }
 
-        MeetingAttendeeAddedDomainEvent meetingAttendeeAddedDomainEvent = null;
         var attendee = MeetingAttendee.CreateNew(
             this.Id,
             attendeeId,
@@ -198,7 +201,9 @@ public class Meeting : Aggregate<MeetingId>
 
         this.CheckRule(new MemberCannotBeNotAttendeeTwiceRule(_notAttendees, memberId));
 
-        _notAttendees.Add(MeetingNotAttendee.CreateNew(this.Id, memberId));
+        MeetingNotAttendee notAttendee = MeetingNotAttendee.CreateNew(this.Id, memberId);
+        _notAttendees.Add(notAttendee);
+        this.AddDomainEvents(notAttendee.MeetingNotAttendeeAddedDomainEvent);
 
         var attendee = this.GetActiveAttendee(memberId);
 
@@ -215,13 +220,15 @@ public class Meeting : Aggregate<MeetingId>
 
         if (nextWaitlistMember != null)
         {
-            _attendees.Add(MeetingAttendee.CreateNew(
+            attendee = MeetingAttendee.CreateNew(
                 this.Id,
                 nextWaitlistMember.MemberId,
                 nextWaitlistMember.SignUpDate,
                 MeetingAttendeeRole.Attendee,
                 0,
-                this._eventFee));
+                this._eventFee);
+            _attendees.Add(attendee);
+            this.AddDomainEvents(attendee.MeetingAttendeeAddedDomainEvent);
             nextWaitlistMember.MarkIsMovedToAttendees();
         }
     }
@@ -247,7 +254,9 @@ public class Meeting : Aggregate<MeetingId>
 
         this.CheckRule(new MemberCannotBeMoreThanOnceOnMeetingWaitlistRule(_waitlistMembers, memberId));
 
-        _waitlistMembers.Add(MeetingWaitlistMember.CreateNew(this.Id, memberId));
+        MeetingWaitlistMember waitlistMember = MeetingWaitlistMember.CreateNew(this.Id, memberId);
+        _waitlistMembers.Add(waitlistMember);
+        this.AddDomainEvents(waitlistMember.MeetingWaitlistMemberAddedDomainEvent);
     }
 
     public void SignOffMemberFromWaitlist(MemberId memberId)
@@ -259,6 +268,8 @@ public class Meeting : Aggregate<MeetingId>
         var memberOnWaitlist = this.GetActiveMemberOnWaitlist(memberId);
 
         memberOnWaitlist.SignOff();
+
+        this.AddDomainEvents(memberOnWaitlist.MemberSignedOffFromMeetingWaitlistDomainEvent);
     }
 
     public void SetHostRole(MeetingGroup meetingGroup, MemberId settingMemberId, MemberId newOrganizerId)
@@ -271,8 +282,8 @@ public class Meeting : Aggregate<MeetingId>
 
         var attendee = this.GetActiveAttendee(newOrganizerId);
 
-        attendee.SetAsHost(out NewMeetingHostSetDomainEvent newMeetingHostSetDomainEvent);
-        this.AddDomainEvents(newMeetingHostSetDomainEvent);
+        attendee.SetAsHost();
+        this.AddDomainEvents(attendee.NewMeetingHostSetDomainEvent);
     }
 
     public void SetAttendeeRole(MeetingGroup meetingGroup, MemberId settingMemberId, MemberId newOrganizerId)
@@ -286,6 +297,8 @@ public class Meeting : Aggregate<MeetingId>
         var attendee = this.GetActiveAttendee(newOrganizerId);
 
         attendee.SetAsAttendee();
+        this.AddDomainEvents(attendee.MemberSetAsAttendeeDomainEvent);
+
 
         var meetingHostNumber = _attendees.Count(x => x.IsActiveHost());
 
@@ -316,6 +329,7 @@ public class Meeting : Aggregate<MeetingId>
         var attendee = this.GetActiveAttendee(attendeeId);
 
         attendee.Remove(removingPersonId, reason);
+        this.AddDomainEvents(attendee.MeetingAttendeeRemovedDomainEvent);
     }
 
     public void MarkAttendeeFeeAsPayed(MemberId memberId)
@@ -323,6 +337,7 @@ public class Meeting : Aggregate<MeetingId>
         var attendee = GetActiveAttendee(memberId);
 
         attendee.MarkFeeAsPayed();
+        this.AddDomainEvents(attendee.MeetingAttendeeFeePaidDomainEvent);
     }
 
     public MeetingComment AddComment(MemberId authorId, string comment, MeetingGroup meetingGroup, MeetingCommentingConfiguration meetingCommentingConfiguration)

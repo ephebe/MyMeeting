@@ -59,7 +59,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{53EA97
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.Services.Shared", "src\services\Shared\MyMeeting.Services.Shared\MyMeeting.Services.Shared.csproj", "{BC96BF1D-55E0-4F0F-9EAC-D53E2D23E158}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.services.Administration.DatabaseMigration", "database\MyMeeting.services.Administration.DatabaseMigration\MyMeeting.services.Administration.DatabaseMigration.csproj", "{BF18034C-A852-4E1F-872E-743EBC83820F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.services.Administration.DatabaseMigration", "database\MyMeeting.services.Administration.DatabaseMigration\MyMeeting.services.Administration.DatabaseMigration.csproj", "{BF18034C-A852-4E1F-872E-743EBC83820F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{8E4D6C44-64AA-48E2-ABBE-2D306F1BAD38}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.Services.Identity.Api", "src\services\Identity\MyMeeting.Services.Identity.Api\MyMeeting.Services.Identity.Api.csproj", "{787B490B-8D32-429C-9394-09F9F9678436}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.Services.Identity.Application", "src\services\Identity\MyMeeting.Services.Identity.Application\MyMeeting.Services.Identity.Application.csproj", "{01FC370F-7B8D-4688-9F62-2C7B01531ABE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.Services.Identity.Core", "src\services\Identity\MyMeeting.Services.Identity.Core\MyMeeting.Services.Identity.Core.csproj", "{C5805148-4982-4721-BB4B-35DB8AA1569C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.Services.Identity.Infrastructure", "src\services\Identity\MyMeeting.Services.Identity.Infrastructure\MyMeeting.Services.Identity.Infrastructure.csproj", "{D2ADFE51-A75D-445E-83F9-188818B2CD7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.services.Identity.DatabaseMigration", "database\MyMeeting.services.Identity.DatabaseMigration\MyMeeting.services.Identity.DatabaseMigration.csproj", "{AC2B9F92-553B-4AF0-8DA4-47993945BFAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +147,26 @@ Global
 		{BF18034C-A852-4E1F-872E-743EBC83820F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF18034C-A852-4E1F-872E-743EBC83820F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF18034C-A852-4E1F-872E-743EBC83820F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{787B490B-8D32-429C-9394-09F9F9678436}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{787B490B-8D32-429C-9394-09F9F9678436}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{787B490B-8D32-429C-9394-09F9F9678436}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{787B490B-8D32-429C-9394-09F9F9678436}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01FC370F-7B8D-4688-9F62-2C7B01531ABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01FC370F-7B8D-4688-9F62-2C7B01531ABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01FC370F-7B8D-4688-9F62-2C7B01531ABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01FC370F-7B8D-4688-9F62-2C7B01531ABE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5805148-4982-4721-BB4B-35DB8AA1569C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5805148-4982-4721-BB4B-35DB8AA1569C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5805148-4982-4721-BB4B-35DB8AA1569C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5805148-4982-4721-BB4B-35DB8AA1569C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2ADFE51-A75D-445E-83F9-188818B2CD7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2ADFE51-A75D-445E-83F9-188818B2CD7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2ADFE51-A75D-445E-83F9-188818B2CD7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2ADFE51-A75D-445E-83F9-188818B2CD7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC2B9F92-553B-4AF0-8DA4-47993945BFAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC2B9F92-553B-4AF0-8DA4-47993945BFAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC2B9F92-553B-4AF0-8DA4-47993945BFAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC2B9F92-553B-4AF0-8DA4-47993945BFAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -166,6 +198,12 @@ Global
 		{53EA9757-777E-4B36-9FAE-C5B92B09AD7A} = {BCD230D6-D566-4DB9-B238-54150D9EB79E}
 		{BC96BF1D-55E0-4F0F-9EAC-D53E2D23E158} = {53EA9757-777E-4B36-9FAE-C5B92B09AD7A}
 		{BF18034C-A852-4E1F-872E-743EBC83820F} = {D2E661A9-F1E3-4C61-8BE1-38D7080831B0}
+		{8E4D6C44-64AA-48E2-ABBE-2D306F1BAD38} = {BCD230D6-D566-4DB9-B238-54150D9EB79E}
+		{787B490B-8D32-429C-9394-09F9F9678436} = {8E4D6C44-64AA-48E2-ABBE-2D306F1BAD38}
+		{01FC370F-7B8D-4688-9F62-2C7B01531ABE} = {8E4D6C44-64AA-48E2-ABBE-2D306F1BAD38}
+		{C5805148-4982-4721-BB4B-35DB8AA1569C} = {8E4D6C44-64AA-48E2-ABBE-2D306F1BAD38}
+		{D2ADFE51-A75D-445E-83F9-188818B2CD7A} = {8E4D6C44-64AA-48E2-ABBE-2D306F1BAD38}
+		{AC2B9F92-553B-4AF0-8DA4-47993945BFAB} = {D2E661A9-F1E3-4C61-8BE1-38D7080831B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F27E50BA-E1EE-4209-8B6B-6CAEF65A519C}

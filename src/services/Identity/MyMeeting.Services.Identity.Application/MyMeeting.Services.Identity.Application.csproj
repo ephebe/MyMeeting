@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Authentication\Login\" />
+    <Folder Include="Authentication\Logout\" />
+    <Folder Include="Authentication\GenerateJwtToken\" />
+    <Folder Include="Authentication\GenerateRefreshToken\" />
+    <Folder Include="Authentication\RevokeRefreshToken\" />
+    <Folder Include="Authentication\RefreshingToken\" />
+    <Folder Include="Authorization\" />
+    <Folder Include="UserRegistrations\GetUserRegistration\" />
+    <Folder Include="UserRegistrations\RegisterNewUser\" />
+    <Folder Include="Users\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyMeeting.Services.Identity.Infrastructure\MyMeeting.Services.Identity.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

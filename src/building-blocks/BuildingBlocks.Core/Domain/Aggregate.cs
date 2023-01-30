@@ -47,13 +47,7 @@ public abstract class Aggregate<TId> : Entity<TId>, IAggregate<TId>
         _uncommittedDomainEvents.Clear();
     }
 
-    public void CheckRule(IBusinessRule rule)
-    {
-        if (rule.IsBroken())
-        {
-            throw new BusinessRuleValidationException(rule);
-        }
-    }
+    
 
 }
 

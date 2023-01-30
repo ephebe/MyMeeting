@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyMeeting.Services.Meetings.Application.MeetingGroupProposals;
+using MyMeeting.Services.Meetings.Application.MeetingGroupProposals.ProposeMeetingGroup;
 
 namespace MyMeeting.Services.Meeting.Api.MeetingGroupProposals;
 

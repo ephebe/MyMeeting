@@ -1,5 +1,6 @@
 ﻿using BuildingBlocks.Core.Domain;
 using BuildingBlocks.Core.Utils;
+using MyMeeting.Services.Meetings.Core.Meetings.Events;
 using MyMeeting.Services.Meetings.Core.Members;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,12 @@ public class MeetingWaitlistMember : Entity
 
     private DateTime? _movedToAttendeesDate;
 
+    internal MeetingWaitlistMemberAddedDomainEvent MeetingWaitlistMemberAddedDomainEvent
+        => new MeetingWaitlistMemberAddedDomainEvent(this.MeetingId, this.MemberId);
+
+    internal MemberSignedOffFromMeetingWaitlistDomainEvent MemberSignedOffFromMeetingWaitlistDomainEvent
+        => new MemberSignedOffFromMeetingWaitlistDomainEvent(this.MeetingId, this.MemberId);
+
     private MeetingWaitlistMember()
     {
     }
@@ -35,8 +42,6 @@ public class MeetingWaitlistMember : Entity
         this.MeetingId = meetingId;
         this.SignUpDate = SystemClock.Now;
         _isMovedToAttendees = false;
-
-        this.AddDomainEvent(new MeetingWaitlistMemberAddedDomainEvent(this.MeetingId, this.MemberId));
     }
 
     internal static MeetingWaitlistMember CreateNew(MeetingId meetingId, MemberId memberId)
@@ -64,7 +69,5 @@ public class MeetingWaitlistMember : Entity
     {
         _isSignedOff = true;
         _signOffDate = SystemClock.Now;
-
-        this.AddDomainEvents(new MemberSignedOffFromMeetingWaitlistDomainEvent(this.MeetingId, this.MemberId));
     }
 }
