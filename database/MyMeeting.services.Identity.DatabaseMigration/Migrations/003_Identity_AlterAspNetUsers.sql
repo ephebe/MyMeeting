@@ -1,13 +1,13 @@
-﻿Alter Table [AspNetUsers]
-ADD FirstName NVARCHAR(100) NOT NULL,
-LastName NVARCHAR(100) NOT NULL,
-UserName NVARCHAR(50) NOT NULL,
-NormalizedUserName NVARCHAR(50) NOT NULL,
-Email VARCHAR(50) NOT NULL,
-NormalizedEmail VARCHAR(50) NOT NULL,
-PhoneNumber VARCHAR(15) NULL,
-CreatedAt DATETIME Default 'now()',
-UserState INT Default 1;
+﻿Alter Table [asp_net_users]
+ADD first_name NVARCHAR(100) NOT NULL,
+last_name NVARCHAR(100) NOT NULL,
+user_name NVARCHAR(50) NOT NULL,
+normalized_user_name NVARCHAR(50) NOT NULL,
+email VARCHAR(50) NOT NULL,
+normalized_email VARCHAR(50) NOT NULL,
+phone_number VARCHAR(15) NULL,
+created_at DATETIME Default 'now()',
+user_state INT Default 1;
 
-CREATE UNIQUE INDEX idx_Email ON dbo.AspNetUsers (email ASC);
-CREATE UNIQUE INDEX idx_NormalizedEmail ON dbo.AspNetUsers (NormalizedEmail ASC);
+CREATE UNIQUE INDEX idx_asp_net_users_email ON dbo.asp_net_users (email ASC);
+CREATE UNIQUE INDEX idx_asp_net_users_normalized_email ON dbo.asp_net_users (normalized_email ASC);
