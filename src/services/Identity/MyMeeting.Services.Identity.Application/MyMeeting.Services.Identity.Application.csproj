@@ -7,19 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Authentication\Login\" />
-    <Folder Include="Authentication\Logout\" />
-    <Folder Include="Authentication\GenerateJwtToken\" />
-    <Folder Include="Authentication\GenerateRefreshToken\" />
-    <Folder Include="Authentication\RevokeRefreshToken\" />
-    <Folder Include="Authentication\RefreshingToken\" />
-    <Folder Include="Authorization\" />
-    <Folder Include="UserRegistrations\GetUserRegistration\" />
-    <Folder Include="UserRegistrations\RegisterNewUser\" />
-    <Folder Include="Users\" />
+    <Compile Remove="Authorization\**" />
+    <Compile Remove="Tokens\Login\**" />
+    <Compile Remove="Tokens\Logout\**" />
+    <Compile Remove="UserRegistrations\**" />
+    <EmbeddedResource Remove="Authorization\**" />
+    <EmbeddedResource Remove="Tokens\Login\**" />
+    <EmbeddedResource Remove="Tokens\Logout\**" />
+    <EmbeddedResource Remove="UserRegistrations\**" />
+    <None Remove="Authorization\**" />
+    <None Remove="Tokens\Login\**" />
+    <None Remove="Tokens\Logout\**" />
+    <None Remove="UserRegistrations\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Security\BuildingBlocks.Security.csproj" />
     <ProjectReference Include="..\MyMeeting.Services.Identity.Infrastructure\MyMeeting.Services.Identity.Infrastructure.csproj" />
   </ItemGroup>
 

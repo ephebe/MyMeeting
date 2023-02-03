@@ -71,7 +71,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.Services.Identity
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.Services.Identity.Infrastructure", "src\services\Identity\MyMeeting.Services.Identity.Infrastructure\MyMeeting.Services.Identity.Infrastructure.csproj", "{D2ADFE51-A75D-445E-83F9-188818B2CD7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.services.Identity.DatabaseMigration", "database\MyMeeting.services.Identity.DatabaseMigration\MyMeeting.services.Identity.DatabaseMigration.csproj", "{AC2B9F92-553B-4AF0-8DA4-47993945BFAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.services.Identity.DatabaseMigration", "database\MyMeeting.services.Identity.DatabaseMigration\MyMeeting.services.Identity.DatabaseMigration.csproj", "{AC2B9F92-553B-4AF0-8DA4-47993945BFAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Security", "src\building-blocks\BuildingBlocks.Security\BuildingBlocks.Security.csproj", "{2DC89C6E-5102-4109-AD34-BE72E76EA7DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -167,6 +169,10 @@ Global
 		{AC2B9F92-553B-4AF0-8DA4-47993945BFAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC2B9F92-553B-4AF0-8DA4-47993945BFAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC2B9F92-553B-4AF0-8DA4-47993945BFAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DC89C6E-5102-4109-AD34-BE72E76EA7DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DC89C6E-5102-4109-AD34-BE72E76EA7DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DC89C6E-5102-4109-AD34-BE72E76EA7DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DC89C6E-5102-4109-AD34-BE72E76EA7DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -204,6 +210,7 @@ Global
 		{C5805148-4982-4721-BB4B-35DB8AA1569C} = {8E4D6C44-64AA-48E2-ABBE-2D306F1BAD38}
 		{D2ADFE51-A75D-445E-83F9-188818B2CD7A} = {8E4D6C44-64AA-48E2-ABBE-2D306F1BAD38}
 		{AC2B9F92-553B-4AF0-8DA4-47993945BFAB} = {D2E661A9-F1E3-4C61-8BE1-38D7080831B0}
+		{2DC89C6E-5102-4109-AD34-BE72E76EA7DC} = {7AA1BD5F-F8A1-4DB1-A6D9-B43691C1998A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F27E50BA-E1EE-4209-8B6B-6CAEF65A519C}

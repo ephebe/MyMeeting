@@ -1,12 +1,12 @@
-﻿CREATE TABLE [refresh_tokens] (
-    [id]                   UNIQUEIDENTIFIER NOT NULL,
-    [token]                 VARCHAR (100)   NOT NULL,
-    [user_id]               UNIQUEIDENTIFIER     NOT NULL,
-    CONSTRAINT [pk_identity_refresh_tokens_id] PRIMARY KEY CLUSTERED ([id] ASC),
-    CONSTRAINT FK_refresh_tokens_AspNetUsers FOREIGN KEY (user_id)
+﻿CREATE TABLE [RefreshTokens] (
+    [Id]                   UNIQUEIDENTIFIER NOT NULL,
+    [Token]                VARCHAR (100)   NOT NULL,
+    [UserId]               UNIQUEIDENTIFIER     NOT NULL,
+    CONSTRAINT [PK_RefreshTokens] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT FK_RefreshTokens_AspNetUsers_UserId FOREIGN KEY ([Id])
         REFERENCES AspNetUsers (Id)
         ON DELETE CASCADE
 );
 
-CREATE UNIQUE INDEX idx_token_user_id ON dbo.refresh_tokens (token ASC, user_id ASC);
+CREATE UNIQUE INDEX IX_RefreshTokens_Token_UserId ON dbo.RefreshTokens (Token ASC, UserId ASC);
 GO
