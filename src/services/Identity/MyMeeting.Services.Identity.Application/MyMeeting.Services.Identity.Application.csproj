@@ -8,16 +8,10 @@
 
   <ItemGroup>
     <Compile Remove="Authorization\**" />
-    <Compile Remove="Tokens\Login\**" />
-    <Compile Remove="Tokens\Logout\**" />
     <Compile Remove="UserRegistrations\**" />
     <EmbeddedResource Remove="Authorization\**" />
-    <EmbeddedResource Remove="Tokens\Login\**" />
-    <EmbeddedResource Remove="Tokens\Logout\**" />
     <EmbeddedResource Remove="UserRegistrations\**" />
     <None Remove="Authorization\**" />
-    <None Remove="Tokens\Login\**" />
-    <None Remove="Tokens\Logout\**" />
     <None Remove="UserRegistrations\**" />
   </ItemGroup>
 
