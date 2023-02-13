@@ -1,5 +1,5 @@
 ﻿using BuildingBlocks.Abstractions.CQRS.Commands;
-using MyMeeting.Services.Identity.Core.ApplicationUsers;
+using MyMeeting.Services.Identity.Core.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;

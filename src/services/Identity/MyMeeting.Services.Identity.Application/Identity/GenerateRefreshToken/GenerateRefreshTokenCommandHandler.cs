@@ -2,7 +2,6 @@
 using BuildingBlocks.Abstractions.CQRS.Commands;
 using BuildingBlocks.Core.Utils;
 using Microsoft.EntityFrameworkCore;
-using MyMeeting.Services.Identity.Application.Tokens.GenerateRefreshToken;
 using MyMeeting.Services.Identity.Core.RefreshTokens;
 using MyMeeting.Services.Identity.Infrastructure;
 using System;

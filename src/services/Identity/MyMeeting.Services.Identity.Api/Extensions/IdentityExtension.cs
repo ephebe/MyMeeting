@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using BuildBlocks.Persistence.EfCore.SqlServer;
 using MyMeeting.Services.Identity.Core.ApplicationRoles;
-using MyMeeting.Services.Identity.Core.ApplicationUsers;
 using MyMeeting.Services.Identity.Infrastructure;
+using MyMeeting.Services.Identity.Core.Users;
 
 namespace MyMeeting.Services.Identity.Api.Extensions;
 

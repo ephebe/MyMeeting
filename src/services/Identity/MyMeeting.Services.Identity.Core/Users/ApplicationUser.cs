@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyMeeting.Services.Identity.Core.Users;
 
-public class ApplicationUser : IdentityUser<ApplicationUserId>
+public class ApplicationUser : IdentityUser<Guid>
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }

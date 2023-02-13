@@ -2,7 +2,7 @@
 using BuildingBlocks.Security.Jwt;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using MyMeeting.Services.Identity.Core.ApplicationUsers;
+using MyMeeting.Services.Identity.Core.Users;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;

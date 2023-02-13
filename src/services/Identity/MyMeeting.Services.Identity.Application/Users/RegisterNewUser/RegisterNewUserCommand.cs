@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMeeting.Services.Identity.Application.Users.RegisterUser;
+namespace MyMeeting.Services.Identity.Application.Users.RegisterNewUser;
 
-public class RegisterUserCommand : ICommand<RegisterUserResult>
+public class RegisterNewUserCommand : ICommand<RegisterNewUserResult>
 {
     public string FirstName { get; }
     public string LastName { get; }
@@ -20,7 +20,7 @@ public class RegisterUserCommand : ICommand<RegisterUserResult>
 
     public DateTime CreatedAt { get; init; } = DateTime.Now;
 
-    public RegisterUserCommand(
+    public RegisterNewUserCommand(
         string firstName,string lastName,string userName,string email,string password,string confirmPassword, List<string>? roles) 
     {
         FirstName= firstName;

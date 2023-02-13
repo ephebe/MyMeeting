@@ -1,9 +1,4 @@
-﻿using MyMeeting.Services.Identity.Core.ApplicationUsers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MyMeeting.Services.Identity.Core.Users;
 
 namespace MyMeeting.Services.Identity.Application.Identity.Login;
 

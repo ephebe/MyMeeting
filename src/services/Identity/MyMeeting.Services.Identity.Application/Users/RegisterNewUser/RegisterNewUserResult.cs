@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMeeting.Services.Identity.Application.Users.RegisterUser;
+namespace MyMeeting.Services.Identity.Application.Users.RegisterNewUser;
 
-public record RegisterUserResult(IdentityUserDto? UserIdentity);
+public record RegisterNewUserResult(IdentityUserDto? UserIdentity);
 

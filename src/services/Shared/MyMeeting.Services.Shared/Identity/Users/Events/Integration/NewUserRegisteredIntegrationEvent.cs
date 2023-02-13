@@ -1,15 +1,15 @@
-﻿using BuildingBlocks.Core.CQRS.Events.Internal;
+﻿using BuildingBlocks.Core.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMeeting.Services.Identity.Core.Users.Events;
+namespace MyMeeting.Services.Shared.UserAccess.UserRegistrations.Events.Integration;
 
-public record NewUserRegisteredDomainEvent : DomainEvent
+public record NewUserRegisteredIntegrationEvent : IntegrationEvent
 {
-    public ApplicationUserId ApplicationUserId { get; }
+    public Guid UserId { get; }
     public string Login { get; }
 
     public string Email { get; }
@@ -22,25 +22,23 @@ public record NewUserRegisteredDomainEvent : DomainEvent
 
     public DateTime RegisterDate { get; }
 
-    public string ConfirmLink { get; }
-
-    public NewUserRegisteredDomainEvent(
-        ApplicationUserId applicationUserId,
+    public NewUserRegisteredIntegrationEvent(
+        Guid userId,
         string login,
         string email,
         string firstName,
         string lastName,
         string name,
-        DateTime registerDate,
-        string confirmLink)
+        DateTime registerDate)
     {
-        ApplicationUserId = applicationUserId;
+        UserId = userId;
         Login = login;
         Email = email;
         FirstName = firstName;
         LastName = lastName;
         Name = name;
         RegisterDate = registerDate;
-        ConfirmLink = confirmLink;
     }
 }
+
+

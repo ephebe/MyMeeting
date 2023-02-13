@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Security\BuildingBlocks.Security.csproj" />
+    <ProjectReference Include="..\..\Shared\MyMeeting.Services.Shared\MyMeeting.Services.Shared.csproj" />
     <ProjectReference Include="..\MyMeeting.Services.Identity.Infrastructure\MyMeeting.Services.Identity.Infrastructure.csproj" />
   </ItemGroup>
 

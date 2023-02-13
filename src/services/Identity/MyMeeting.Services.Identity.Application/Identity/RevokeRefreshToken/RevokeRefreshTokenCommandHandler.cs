@@ -2,8 +2,8 @@
 using BuildingBlocks.Abstractions.CQRS.Commands;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using MyMeeting.Services.Identity.Application.ApplicationUsers.Exceptions;
-using MyMeeting.Services.Identity.Application.Tokens.GenerateRefreshToken;
+using MyMeeting.Services.Identity.Application.Identity.Exceptions;
+using MyMeeting.Services.Identity.Application.Identity.GenerateRefreshToken;
 using MyMeeting.Services.Identity.Core.RefreshTokens;
 using MyMeeting.Services.Identity.Infrastructure;
 using System;

@@ -12,13 +12,13 @@ public class ApplicationRole : IdentityRole<Guid>
 {
     public static ApplicationRole User => new()
     {
-        Name = IdentityConstants.Role.User,
+        Name = MeetingIdentityConstants.Role.User,
         NormalizedName = nameof(User).ToUpper(CultureInfo.InvariantCulture),
     };
 
     public static ApplicationRole Admin => new()
     {
-        Name = IdentityConstants.Role.Admin,
+        Name = MeetingIdentityConstants.Role.Admin,
         NormalizedName = nameof(Admin).ToUpper(CultureInfo.InvariantCulture)
     };
 }

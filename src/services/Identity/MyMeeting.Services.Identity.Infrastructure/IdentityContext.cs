@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using MyMeeting.Services.Identity.Core.ApplicationRoles;
-using MyMeeting.Services.Identity.Core.ApplicationUsers;
+using MyMeeting.Services.Identity.Core.Users;
 
 namespace MyMeeting.Services.Identity.Infrastructure;
 

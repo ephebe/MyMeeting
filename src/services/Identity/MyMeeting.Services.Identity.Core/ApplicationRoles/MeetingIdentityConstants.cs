@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyMeeting.Services.Identity.Core.ApplicationRoles;
 
-public static class IdentityConstants
+public static class MeetingIdentityConstants
 {
     public static class Role
     {
