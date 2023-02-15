@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMeeting.Services.Shared.Meetings.MeetingGroupProposals.Events.Integration;
+namespace MyMeeting.Services.Shared.Meetings.IntegrationEvents;
 
 public record MeetingGroupProposedIntegrationEvent : IntegrationEvent
 {
-    public Guid MeetingGroupProposalId { 
-        get; 
-        set; 
+    public Guid MeetingGroupProposalId
+    {
+        get;
+        set;
     }
 
     public string Name { get; set; }

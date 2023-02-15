@@ -4,7 +4,7 @@ using BuildingBlocks.Abstractions.CQRS.Events.Internal;
 using BuildingBlocks.Abstractions.Messaging;
 using BuildingBlocks.Core.Mapping;
 using MyMeeting.Services.Meetings.Core.MeetingGroupProposals.Events;
-using MyMeeting.Services.Shared.Meetings.MeetingGroupProposals.Events.Integration;
+using MyMeeting.Services.Shared.Meetings.IntegrationEvents;
 using System;
 using System.Collections.Generic;
 using System.Linq;

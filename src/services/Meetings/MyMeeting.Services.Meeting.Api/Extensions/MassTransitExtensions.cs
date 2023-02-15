@@ -1,7 +1,6 @@
 ﻿using Humanizer;
 using MassTransit;
 using RabbitMQ.Client;
-using MyMeeting.Services.Shared.Meetings.MeetingGroupProposals.Events.Integration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MyMeeting.Services.Shared.Administration.MeetingGroupProposals.Events.Integration;
 using MyMeeting.Services.Meetings.Api.MeetingGroupProposals;
+using MyMeeting.Services.Shared.Meetings.IntegrationEvents;
 
 namespace MyMeeting.Services.Meeting.Api.Extensions;
 

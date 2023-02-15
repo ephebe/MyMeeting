@@ -2,9 +2,9 @@
 using MassTransit;
 using RabbitMQ.Client;
 using MyMeeting.Services.Administration.Application.MeetingGroupProposals;
-using MyMeeting.Services.Shared.Meetings.MeetingGroupProposals.Events.Integration;
 using MyMeeting.Services.Shared.Administration.MeetingGroupProposals.Events.Integration;
 using MyMeeting.Services.Administration.Api.MeetingGroupProposals;
+using MyMeeting.Services.Shared.Meetings.IntegrationEvents;
 
 namespace MyMeeting.Services.Administration.Api.Extensions;
 
