@@ -25,8 +25,11 @@ public class MeetingFee : Aggregate<MeetingFeeId>
         this.When((dynamic)@event);
     }
 
-    private MeetingFee()
+    private MeetingFee(MeetingFeeId meetingFeeId, PayerId payerId, MeetingId meetingId, MoneyValue fee)
     {
+        this.Id= meetingFeeId;
+        this._payerId= payerId;
+        this._meetingId = meetingId;
     }
 
     public static MeetingFee Create(
@@ -34,7 +37,12 @@ public class MeetingFee : Aggregate<MeetingFeeId>
         MeetingId meetingId,
         MoneyValue fee)
     {
-        var meetingFee = new MeetingFee();
+        return new MeetingFee(Guid.NewGuid(),
+            payerId.Value,
+            meetingId.Value,
+            fee.Value,
+            fee.Currency,
+            MeetingFeeStatus.WaitingForPayment.Code);
 
         var meetingFeeCreated = new MeetingFeeCreatedDomainEvent(
             Guid.NewGuid(),
@@ -61,10 +69,6 @@ public class MeetingFee : Aggregate<MeetingFeeId>
         this.AddDomainEvent(@event);
     }
 
-    public MeetingFeeSnapshot GetSnapshot()
-    {
-        return new MeetingFeeSnapshot(this.Id, _payerId.Value, _meetingId.Value);
-    }
 
     private void When(MeetingFeeCreatedDomainEvent meetingFeeCreated)
     {

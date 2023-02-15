@@ -22,7 +22,7 @@ internal class MeetingGroupProposalAcceptedDomainEventHandler : IDomainEventHand
 
     public async Task Handle(MeetingGroupProposalAcceptedDomainEvent notification, CancellationToken cancellationToken)
     {
-        await _commandProcessor.SendAsync(
+        await _commandProcessor.ScheduleAsync(
                 new CreateNewMeetingGroupInternalCommand(
                     notification.MeetingGroupProposalId));
     }

@@ -1,9 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Core\BuildingBlocks.Core.csproj" />
+    <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Integration.MassTransit\BuildingBlocks.Integration.MassTransit.csproj" />
+    <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Messaging.Persistence.SqlServer\BuildingBlocks.Messaging.Persistence.SqlServer.csproj" />
+    <ProjectReference Include="..\..\Shared\MyMeeting.Services.Shared\MyMeeting.Services.Shared.csproj" />
+    <ProjectReference Include="..\MyMeeting.Services.Payments.Application\MyMeeting.Services.Payments.Application.csproj" />
+  </ItemGroup>
 
 </Project>
