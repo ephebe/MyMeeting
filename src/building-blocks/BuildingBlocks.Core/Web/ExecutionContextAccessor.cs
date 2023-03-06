@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.Abstractions.Web;
+using BuildingBlocks.Core.Exception.Types;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -48,7 +49,7 @@ public class ExecutionContextAccessor : IExecutionContextAccessor
                     _httpContextAccessor.HttpContext.Request.Headers[CorrelationMiddleware.CorrelationHeaderKey]);
             }
 
-            throw new ApplicationException("Http context and correlation id is not available");
+            throw new AppException("Http context and correlation id is not available");
         }
     }
 

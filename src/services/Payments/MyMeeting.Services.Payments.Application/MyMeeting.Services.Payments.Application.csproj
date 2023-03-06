@@ -1,11 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\..\building-blocks\BuildingBlocks.Core\BuildingBlocks.Core.csproj" />
     <ProjectReference Include="..\MyMeeting.Services.Payments.Infrastructure\MyMeeting.Services.Payments.Core\MyMeeting.Services.Payments.Core.csproj" />

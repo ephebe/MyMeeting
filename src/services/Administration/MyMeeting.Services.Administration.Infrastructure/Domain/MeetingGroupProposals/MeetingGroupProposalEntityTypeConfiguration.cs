@@ -24,7 +24,7 @@ internal class MeetingGroupProposalEntityTypeConfiguration : IEntityTypeConfigur
         builder.Property<string>("_description").HasColumnName("description");
         builder.Property<UserId>("_proposalUserId")
             .HasColumnName("proposal_user_id")
-            .HasConversion(id => id.Value, id => id); ;
+            .HasConversion(id => id.Value, id => id);
 
         builder.Property<DateTime>("_proposalDate").HasColumnName("proposal_date");
 

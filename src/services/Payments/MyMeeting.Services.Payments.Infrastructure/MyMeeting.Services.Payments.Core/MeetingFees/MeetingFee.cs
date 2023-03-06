@@ -2,11 +2,6 @@
 using BuildingBlocks.Core.Domain;
 using MyMeeting.Services.Payments.Core.MeetingFees.Events;
 using MyMeeting.Services.Payments.Core.Payers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyMeeting.Services.Payments.Core.MeetingFees;
 
@@ -20,16 +15,13 @@ public class MeetingFee : Aggregate<MeetingFeeId>
 
     private MeetingFeeStatus _status;
 
-    protected override void Apply(IDomainEvent @event)
+    protected void Apply(IDomainEvent @event)
     {
         this.When((dynamic)@event);
     }
 
-    private MeetingFee(MeetingFeeId meetingFeeId, PayerId payerId, MeetingId meetingId, MoneyValue fee)
+    private MeetingFee()
     {
-        this.Id= meetingFeeId;
-        this._payerId= payerId;
-        this._meetingId = meetingId;
     }
 
     public static MeetingFee Create(
@@ -37,12 +29,7 @@ public class MeetingFee : Aggregate<MeetingFeeId>
         MeetingId meetingId,
         MoneyValue fee)
     {
-        return new MeetingFee(Guid.NewGuid(),
-            payerId.Value,
-            meetingId.Value,
-            fee.Value,
-            fee.Currency,
-            MeetingFeeStatus.WaitingForPayment.Code);
+        var meetingFee = new MeetingFee();
 
         var meetingFeeCreated = new MeetingFeeCreatedDomainEvent(
             Guid.NewGuid(),
@@ -66,13 +53,13 @@ public class MeetingFee : Aggregate<MeetingFeeId>
                 MeetingFeeStatus.Paid.Code);
 
         this.Apply(@event);
-        this.AddDomainEvent(@event);
+        this.AddDomainEvents(@event);
     }
 
 
     private void When(MeetingFeeCreatedDomainEvent meetingFeeCreated)
     {
-        this.Id = meetingFeeCreated.MeetingFeeId;
+        this.Id = new MeetingFeeId(meetingFeeCreated.MeetingFeeId);
         _payerId = new PayerId(meetingFeeCreated.PayerId);
         _meetingId = new MeetingId(meetingFeeCreated.MeetingId);
         _fee = MoneyValue.Of(meetingFeeCreated.FeeValue, meetingFeeCreated.FeeCurrency);

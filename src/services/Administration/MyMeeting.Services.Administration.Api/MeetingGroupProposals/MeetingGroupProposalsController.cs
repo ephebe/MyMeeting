@@ -14,7 +14,7 @@ public class MeetingGroupProposalsController : ControllerBase
     public MeetingGroupProposalsController(ICommandProcessor commandProcessor, IQueryProcessor queryProcessor)
     {
         _commandProcessor = commandProcessor;
-        _queryProcessor = queryProcessor; ;
+        _queryProcessor = queryProcessor;
     }
 
     [HttpGet("")]

@@ -40,6 +40,7 @@
     <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="$(MicrosoftConfigurationVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Options.DataAnnotations" Version="$(MicrosoftConfigurationVersion)" />
     <PackageVersion Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+	<PackageVersion Include="Microsoft.Extensions.Identity.Stores" Version="$(AspNetCoreVersion)" />
     <PackageVersion Include="Microsoft.Tye.Extensions.Configuration" Version="0.10.0-alpha.21420.1" />
     <PackageVersion Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.0.64" />
     <PackageVersion Include="Microsoft.DotNet.PlatformAbstractions" Version="3.1.6" />
@@ -75,7 +76,7 @@
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="$(AspNetCoreVersion)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="$(AspNetCoreVersion)" />
     <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(AspNetCoreVersion)" />
-    <PackageVersion Include="EFCore.NamingConventions" Version="$(AspNetCoreVersion)" />
+    <PackageVersion Include="EFCore.NamingConventions" Version="6.0.0" />
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="$(AspNetCoreVersion)" />
   </ItemGroup>
   <ItemGroup>
@@ -191,5 +192,13 @@
     <PackageVersion Include="EasyCaching.Redis" Version="1.8.0" />
     <PackageVersion Include="EasyCaching.InMemory" Version="1.8.0" />
     <PackageVersion Include="EasyCaching.Core" Version="1.8.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="$(AspNetCoreVersion)" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+    <PackageVersion Include="xunit" Version="2.4.1" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.4.3" />
+    <PackageVersion Include="LightBDD.XUnit2" Version="3.5.0" />
+	<PackageVersion Include="coverlet.collector" Version="3.1.2" />
   </ItemGroup>
 </Project>

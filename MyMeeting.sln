@@ -75,13 +75,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.services.Identity
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlocks.Security", "src\building-blocks\BuildingBlocks.Security\BuildingBlocks.Security.csproj", "{2DC89C6E-5102-4109-AD34-BE72E76EA7DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.Services.Payments.Api", "src\services\Payments\MyMeeting.Services.Payments.Api\MyMeeting.Services.Payments.Api.csproj", "{2B3D9EDB-1F7F-4684-B928-5DB6520D2F4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.Services.Payments.Api", "src\services\Payments\MyMeeting.Services.Payments.Api\MyMeeting.Services.Payments.Api.csproj", "{2B3D9EDB-1F7F-4684-B928-5DB6520D2F4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.Services.Paymemts.Infrastructure", "src\services\Payments\MyMeeting.Services.Paymemts.Infrastructure\MyMeeting.Services.Paymemts.Infrastructure.csproj", "{72FFB890-8E01-4475-AA49-48B611AD1556}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.Services.Paymemts.Infrastructure", "src\services\Payments\MyMeeting.Services.Paymemts.Infrastructure\MyMeeting.Services.Paymemts.Infrastructure.csproj", "{72FFB890-8E01-4475-AA49-48B611AD1556}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.Services.Payments.Application", "src\services\Payments\MyMeeting.Services.Payments.Application\MyMeeting.Services.Payments.Application.csproj", "{D0F7592F-A82B-46BF-B65B-A0DF750410C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.Services.Payments.Application", "src\services\Payments\MyMeeting.Services.Payments.Application\MyMeeting.Services.Payments.Application.csproj", "{D0F7592F-A82B-46BF-B65B-A0DF750410C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMeeting.Services.Payments.Core", "src\services\Payments\MyMeeting.Services.Payments.Infrastructure\MyMeeting.Services.Payments.Core\MyMeeting.Services.Payments.Core.csproj", "{C742A2A1-6B54-4A3C-926F-F712274F7F07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMeeting.Services.Payments.Core", "src\services\Payments\MyMeeting.Services.Payments.Infrastructure\MyMeeting.Services.Payments.Core\MyMeeting.Services.Payments.Core.csproj", "{C742A2A1-6B54-4A3C-926F-F712274F7F07}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8D346DC0-BDF6-4E17-AE5F-5ADC1771EBF9}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
